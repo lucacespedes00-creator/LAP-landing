@@ -1013,14 +1013,13 @@ function AuditSection() {
       {/* Header text block */}
       <div className="mb-12 max-w-[600px]">
         <div className="text-[10px] font-mono tracking-[0.25em] text-[#869ab5] uppercase font-bold mb-6">
-          LET'S BUILD YOUR GROWTH SYSTEM
+          CHARLEMOS DE ESTRATEGIAS Y ESCALAR
         </div>
         <h2 className="text-[40px] md:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-6">
-          Reservá tu<br /><span className="italic text-[#93a7c6] font-normal">Auditoria de Captación</span>
+          Aplica y reserva tu<br /><span className="italic text-[#93a7c6] font-normal">Auditoria de Captación</span>
         </h2>
         <p className="text-gray-400 text-[17px] leading-[1.6] font-['Space_Grotesk'] font-normal not-italic">
-          30 minutes. We map your current setup, find the gaps, and show you exactly what this looks like built into your business.
-        </p>
+        30 minutos. Analizamos tu situación actual, identificamos los puntos débiles y te muestro exactamente cómo se vería este sistema aplicado a tu negocio.        </p>
       </div>
 
       <div className="flex items-center gap-4 mb-8">
@@ -1103,14 +1102,9 @@ function FooterSection() {
       <div className="flex flex-col md:flex-row justify-between items-start gap-16 px-6 lg:px-24 mb-24">
         {/* Left Col */}
         <div className="max-w-[320px]">
-           <div className="flex items-center gap-2.5 font-sans font-medium text-[18px] text-[#f4f4f2] tracking-tight mb-6">
-             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-               <path d="M2 13L9 9V12L2 16V13Z" />
-               <path d="M2 17L9 13V16L2 20V17Z" />
-               <path d="M10 9L21 2.5V5.5L10 12V9Z" />
-               <path d="M10 13L21 6.5V9.5L10 16V13Z" />
-             </svg>
-             GrowthFlare
+           <div className="flex items-center gap-3 font-sans font-medium text-[18px] text-[#f4f4f2] tracking-tight mb-6">
+             <img src="/lap-logo.png" alt="Linked Acquisition Partner" className="h-8 object-contain" />
+             <span>Linked Acquisition Partner</span>
            </div>
            <p className="text-[11.5px] font-mono leading-[1.8] text-gray-400">
              A B2B growth partner. We build<br/>
@@ -1141,7 +1135,7 @@ function FooterSection() {
       </div>
 
       <div className="border-t border-dashed border-white/10 pt-8 px-6 lg:px-24 flex items-center justify-between">
-         <span className="text-[11px] font-mono text-gray-500">© 2026 GrowthFlare</span>
+         <span className="text-[11px] font-mono text-gray-500">© 2026 Linked Acquisition Partner</span>
       </div>
     </footer>
   );
