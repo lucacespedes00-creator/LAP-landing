@@ -1,0 +1,6 @@
+{
+  "name": "GrowthFlare Landing Page",
+  "description": "B2B Growth Partner Landing Page with a dark, sophisticated aesthetic.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
