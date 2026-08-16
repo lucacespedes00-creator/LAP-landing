@@ -15,7 +15,7 @@ const navItems = [
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('problema');
+  const [activeSection, setActiveSection] = useState('');
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -38,15 +38,16 @@ export default function App() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      const triggerPoint = window.innerHeight * 0.35;
-      let currentActive = 'problema';
+      const triggerPoint = 180;
+      let currentActive = '';
 
       for (const id of sectionIds) {
         const el = document.getElementById(id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= triggerPoint) {
+          if (rect.top <= triggerPoint && rect.bottom > triggerPoint) {
             currentActive = id;
+            break;
           }
         }
       }
