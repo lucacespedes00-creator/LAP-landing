@@ -1272,29 +1272,28 @@ function YoutubeSection() {
   );
 }
 
-function VideoCard({ title, desc, thumb }: { title: string, desc: string, thumb: string }) {
+function VideoCard({ title, desc, thumb }: { title?: string, desc?: string, thumb?: string }) {
   return (
-    <div className="w-[340px] flex flex-col bg-[#161920]/60 border border-white/5 rounded-xl overflow-hidden shrink-0 hover:border-white/10 transition-colors">
-      <div className="relative h-[190px] w-full overflow-hidden group/thumb cursor-pointer">
-        <img src={thumb} alt={title} className="w-full h-full object-cover opacity-80 group-hover/thumb:scale-105 group-hover/thumb:opacity-100 transition-all duration-700" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-14 h-10 bg-black/70 rounded-[8px] flex items-center justify-center backdrop-blur-sm border border-white/10 group-hover/thumb:bg-red-600 group-hover/thumb:border-red-500 transition-colors duration-300">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-              <path d="M5 3l14 9-14 9V3z" />
-            </svg>
-          </div>
+    <div className="w-[340px] flex flex-col bg-[#161920]/40 border border-white/5 rounded-xl overflow-hidden shrink-0">
+      {/* Thumbnail placeholder */}
+      <div className="relative h-[190px] w-full flex items-center justify-center bg-white/[0.02] border-b border-white/5">
+        <div className="w-14 h-10 rounded-lg border border-dashed border-white/10 flex items-center justify-center">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/20">
+            <polygon points="5 3 19 12 5 21 5 3" />
+          </svg>
         </div>
       </div>
+      {/* Content placeholder */}
       <div className="p-6 flex flex-col flex-1">
-        <h4 className="text-[17px] font-serif font-medium text-[#f4f4f2] leading-[1.3] mb-3 line-clamp-2">{title}</h4>
-        <p className="text-[13px] text-gray-400 font-['Space_Grotesk'] leading-[1.6] mb-6 flex-1 line-clamp-3">{desc}</p>
-        <div className="pt-4 border-t border-dashed border-white/10">
-          <a href="#" className="text-[10px] font-mono tracking-widest text-[#869ab5] uppercase flex items-center gap-1.5 hover:text-[#f4f4f2] transition-colors group/link">
-            Watch on Youtube 
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-70 group-hover/link:opacity-100 group-hover/link:-translate-y-[1px] group-hover/link:translate-x-[1px] transition-all">
-              <path d="M5 19L19 5M19 5v10M19 5H9" />
-            </svg>
-          </a>
+        <div className="w-3/4 h-[14px] bg-white/10 rounded-sm mb-3" />
+        <div className="w-1/2 h-[14px] bg-white/10 rounded-sm mb-6" />
+        
+        <div className="w-full h-2 bg-white/5 rounded-sm mb-2.5" />
+        <div className="w-5/6 h-2 bg-white/5 rounded-sm mb-2.5" />
+        <div className="w-2/3 h-2 bg-white/5 rounded-sm mb-6" />
+        
+        <div className="mt-auto pt-5 border-t border-dashed border-white/10 flex items-center">
+           <div className="w-24 h-2 bg-white/5 rounded-sm" />
         </div>
       </div>
     </div>
