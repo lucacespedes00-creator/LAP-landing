@@ -747,28 +747,28 @@ function DeploymentSection() {
     },
     { 
       id: 2, 
-      timeframe: "SEMANA 2", 
+      timeframe: "SEMANA 1-2", 
       title: "Instalamos la Arquitectura", 
       heading: "Instalamos la Arquitectura.", 
       desc: "Instalamos los sistemas que van a correr solos a partir de acá: dashboards de métricas, SOPs, y la infraestructura para lanzar campañas, crear contenido, publicar posts, construir tu lista de emails y generar recursos. No es trabajo manual repetido cada semana — es una arquitectura que, una vez instalada, sigue funcionando paso a paso con el tiempo." 
     },
     { 
       id: 3, 
-      timeframe: "SEMANA 3", 
+      timeframe: "SEMANA 2", 
       title: "Arranca la Ejecución", 
       heading: "Arranca la Ejecución.", 
       desc: "Arranca la ejecución: outbound saliendo a buscar tomadores de decisión, inbound generando atención con contenido, y todo el sistema trabajando en conjunto para atraer, nutrir y convertir." 
     },
     { 
       id: 4, 
-      timeframe: "SEMANA 2-3", 
-      title: "Secuencias de Cierre", 
-      heading: "Seguimiento y manejo de objeciones.", 
-      desc: "Aplicamos secuencias estructuradas para presentar tu solución en detalle, responder dudas comunes y empujar al prospecto a agendar la reunión." 
+      timeframe: "SEMANA 3", 
+      title: "Llegan los Primeros Resultados", 
+      heading: "Llegan los Primeros Resultados.", 
+      desc: "Empiezan a llegar los primeros resultados y con ellos, la primera data real: qué mensajes generan respuesta, qué objeciones se repiten, qué secuencias convierten. Usamos esa información para ajustar y optimizar el sistema, sprint a sprint, en base a lo que el mercado ya nos está mostrando." 
     },
     { 
       id: 5, 
-      timeframe: "SEMANA 3", 
+      timeframe: "SEMANA 3+", 
       title: "Trackeo y Mejora", 
       heading: "Medimos, ajustamos y escalamos.", 
       desc: "Monitoreamos las tasas de apertura y respuesta. Optimizamos cada etapa del embudo hasta lograr un flujo estable de 3 a 10 llamadas agendadas por semana." 
@@ -1103,21 +1103,55 @@ function DeploymentVisual({ phase }: { phase: number }) {
   if (phase === 3) {
     return (
       <div key="p3" className={fadeClass}>
-        <div className="flex flex-col gap-3 w-full max-w-[300px]">
-          <div className="bg-[#1a202c] border border-white/10 rounded-lg p-4 opacity-50 ml-8">
-            <div className="text-[10px] text-[#93a7c6] mb-1">Día 1</div>
-            <div className="h-2 w-3/4 bg-white/20 rounded" />
+        <div className="w-full max-w-[340px] bg-[#161920] border border-white/10 rounded-xl p-6 shadow-2xl relative z-10 group">
+          {/* Badge */}
+          <div className="absolute -top-3 -right-3 bg-[#93a7c6] text-[#0a0a0a] text-[11px] font-bold px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(147,167,198,0.3)]">
+            Data Real
           </div>
-          <div className="bg-[#1a202c] border border-white/10 rounded-lg p-4 opacity-70 ml-4 relative">
-            <div className="absolute top-1/2 -left-4 w-4 h-px bg-white/20" />
-            <div className="text-[10px] text-[#93a7c6] mb-1">Día 4</div>
-            <div className="h-2 w-full bg-white/20 rounded" />
+          
+          <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/5">
+             <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#869ab5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12h4l3-9 5 18 3-9h5"></path></svg>
+             </div>
+             <div className="flex-1">
+                <div className="text-[10px] font-mono tracking-widest text-[#869ab5] uppercase">Feedback Loop</div>
+             </div>
           </div>
-          <div className="bg-[#93a7c6]/10 border border-[#93a7c6]/50 rounded-lg p-4 shadow-[0_0_20px_rgba(147,167,198,0.2)] relative">
-            <div className="absolute top-1/2 -left-8 w-8 h-px bg-[#93a7c6]/50" />
-            <div className="text-[10px] text-[#93a7c6] font-bold mb-1">Día 7 - Cierre</div>
-            <div className="h-2 w-5/6 bg-[#93a7c6]/70 rounded" />
+          
+          {/* A/B Testing Rows */}
+          <div className="space-y-4 mb-6">
+             {/* Message A */}
+             <div className="relative p-3 rounded-lg border border-white/5 bg-white/[0.02]">
+                <div className="flex items-center justify-between mb-2">
+                   <div className="text-[9px] font-mono text-gray-500 uppercase">Variante A (Original)</div>
+                   <div className="text-[9px] font-mono text-red-400">12% Resp.</div>
+                </div>
+                <div className="h-1.5 w-full bg-white/5 rounded overflow-hidden">
+                   <div className="h-full w-[12%] bg-red-400/50" />
+                </div>
+             </div>
+             
+             {/* Message B */}
+             <div className="relative p-3 rounded-lg border border-[#93a7c6]/30 bg-[#93a7c6]/5 shadow-[0_0_15px_rgba(147,167,198,0.1)] group-hover:bg-[#93a7c6]/10 transition-colors">
+                <div className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-3 h-3 bg-[#93a7c6] rounded-full flex items-center justify-center">
+                   <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#161920" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div className="flex items-center justify-between mb-2 pl-3">
+                   <div className="text-[9px] font-mono text-[#f4f4f2] font-bold uppercase">Variante B (Optimizada)</div>
+                   <div className="text-[9px] font-mono text-green-400">34% Resp.</div>
+                </div>
+                <div className="h-1.5 w-full bg-white/5 rounded overflow-hidden ml-3 max-w-[calc(100%-12px)]">
+                   <div className="h-full w-[12%] bg-green-400/80 group-hover:w-[34%] transition-all duration-1000" />
+                </div>
+             </div>
           </div>
+          
+          {/* Optimization Action */}
+          <div className="w-full bg-white/5 border border-white/10 rounded p-3 flex items-center justify-center gap-2 group-hover:bg-white/10 transition-colors">
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#93a7c6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="animate-[spin_3s_linear_infinite]"><path d="M21.5 2v6h-6M2.13 15.57a10 10 0 1 0 5.43-10.9l-5.43 2.9"></path></svg>
+             <span className="text-[10px] font-mono text-gray-400 uppercase">Iterando Sprint...</span>
+          </div>
+
         </div>
       </div>
     );
