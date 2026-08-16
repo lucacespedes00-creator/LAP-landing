@@ -519,7 +519,7 @@ function ComparisonSection() {
   ];
 
   return (
-    <section className="w-[1300px] mx-auto px-6 lg:px-24 pt-24 pb-32 flex flex-col items-center relative z-10 border-t border-dashed border-white/10">
+    <section className="w-[1300px] mx-auto px-6 lg:px-24 pt-24 pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
       {/* Crosshairs */}
       <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
@@ -528,72 +528,94 @@ function ComparisonSection() {
          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
       </div>
 
-      <div className="text-center mb-16">
-        <h2 className="text-[40px] md:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2]">
+      <div className="flex items-center gap-6 mb-16">
+        <span className="text-[11px] font-mono tracking-[0.25em] text-[#869ab5] uppercase font-bold whitespace-nowrap">
+          Comparativa
+        </span>
+        <div className="flex-1 h-px border-b border-dashed border-white/10" />
+      </div>
+
+      <div className="max-w-[700px] mb-16">
+        <h2 className="text-[40px] md:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-6">
           Por Qué Rainmaking vs <br />
           <span className="italic text-[#93a7c6] font-normal">Otras Alternativas</span>
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 w-full max-w-[1100px] mx-auto items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full max-w-[1100px] items-start">
         {/* Left Column - Rainmaking */}
-        <div className="bg-[#121316] border border-[#93a7c6]/30 rounded-2xl p-8 lg:p-10 shadow-[0_0_30px_rgba(147,167,198,0.05)] relative overflow-hidden">
-          {/* Subtle glow */}
-          <div className="absolute -top-20 -left-20 w-40 h-40 bg-[#93a7c6]/10 rounded-full blur-[50px] pointer-events-none" />
-          
-          <h3 className="text-[24px] font-serif font-medium text-[#f4f4f2] mb-8 text-center relative z-10">Rainmaking</h3>
-          
-          <ul className="space-y-6 relative z-10">
-            {rainmakingPoints.map((point, idx) => (
-              <li key={idx} className="flex items-start gap-4 text-[14.5px] text-gray-200 leading-[1.6]">
-                <div className="w-5 h-5 rounded-full bg-[#93a7c6]/10 border border-[#93a7c6]/30 flex items-center justify-center shrink-0 mt-[2px]">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93a7c6" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </div>
-                <span>{point}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Right Column - Alternatives */}
-        <div className="flex flex-col min-h-[460px]">
-          {/* Tabs */}
-          <div className="flex items-center gap-6 mb-6 border-b border-white/10 overflow-x-auto scrollbar-hide pb-0">
-            {alternatives.map((alt, idx) => (
-              <button
-                key={alt.id}
-                onClick={() => setActiveTab(idx)}
-                className={`text-[13px] font-medium pb-4 transition-colors relative whitespace-nowrap cursor-pointer ${
-                  activeTab === idx ? 'text-[#f4f4f2]' : 'text-gray-500 hover:text-gray-300'
-                }`}
-              >
-                {alt.title}
-                {activeTab === idx && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#93a7c6] rounded-t-full shadow-[0_0_10px_rgba(147,167,198,0.5)]" />
-                )}
-              </button>
-            ))}
+        <div className="bg-[#1a1c23]/40 border border-white/5 rounded-xl flex flex-col h-full min-h-[480px]">
+          <div className="p-6 lg:p-8 border-b border-white/5 flex items-center gap-4">
+            <div className="w-8 h-8 rounded border border-[#93a7c6]/30 bg-[#93a7c6]/10 flex items-center justify-center">
+               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#93a7c6]">
+                  <polyline points="20 6 9 17 4 12" />
+               </svg>
+            </div>
+            <span className="text-[13px] font-mono tracking-widest text-[#f4f4f2] uppercase font-semibold">Rainmaking</span>
           </div>
-
-          {/* Tab Content Card */}
-          <div className="bg-[#161920]/40 border border-white/5 rounded-2xl p-8 lg:p-10 flex flex-col transition-all duration-300 flex-1">
-            <h3 className="text-[20px] font-serif font-medium text-[#f4f4f2] mb-8">{alternatives[activeTab].title}</h3>
-            
+          <div className="p-6 lg:p-8 flex-1">
             <ul className="space-y-6">
-              {alternatives[activeTab].points.map((point, idx) => (
-                <li key={idx} className="flex items-start gap-4 text-[14.5px] text-gray-400 leading-[1.6]">
-                  <div className="w-5 h-5 rounded-full bg-red-400/10 border border-red-400/20 flex items-center justify-center shrink-0 mt-[2px]">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#f87171" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
+              {rainmakingPoints.map((point, idx) => (
+                <li key={idx} className="flex items-start gap-4 text-[15px] text-gray-400 font-['Space_Grotesk'] leading-[1.6]">
+                  <div className="w-5 h-5 rounded-full bg-[#93a7c6]/10 border border-[#93a7c6]/30 flex items-center justify-center shrink-0 mt-[2px]">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93a7c6" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>
                   <span>{point}</span>
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+
+        {/* Right Column - Alternatives */}
+        <div className="flex flex-col h-full min-h-[480px]">
+          {/* Tabs */}
+          <div className="flex items-center gap-6 mb-6 border-b border-white/10 overflow-x-auto scrollbar-hide pb-0 pl-2">
+            {alternatives.map((alt, idx) => (
+              <button
+                key={alt.id}
+                onClick={() => setActiveTab(idx)}
+                className={`text-[12px] font-mono uppercase tracking-widest pb-4 transition-colors relative whitespace-nowrap cursor-pointer ${
+                  activeTab === idx ? 'text-[#f4f4f2] font-semibold' : 'text-gray-500 hover:text-gray-300'
+                }`}
+              >
+                {alt.title}
+                {activeTab === idx && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-500 rounded-t-full" />
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Tab Content Card */}
+          <div className="bg-[#1a1c23]/40 border border-white/5 rounded-xl flex flex-col flex-1 transition-all duration-300">
+            <div className="p-6 lg:p-8 border-b border-white/5 flex items-center gap-4">
+              <div className="w-8 h-8 rounded border border-white/10 bg-white/5 flex items-center justify-center">
+                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-gray-500">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                 </svg>
+              </div>
+              <span className="text-[13px] font-mono tracking-widest text-gray-500 uppercase font-semibold">{alternatives[activeTab].title}</span>
+            </div>
+            
+            <div className="p-6 lg:p-8 flex-1">
+              <ul className="space-y-6">
+                {alternatives[activeTab].points.map((point, idx) => (
+                  <li key={idx} className="flex items-start gap-4 text-[15px] text-gray-500 font-['Space_Grotesk'] leading-[1.6]">
+                    <div className="w-5 h-5 rounded-full bg-red-400/10 border border-red-400/20 flex items-center justify-center shrink-0 mt-[2px]">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#f87171" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                      </svg>
+                    </div>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
