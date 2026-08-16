@@ -926,17 +926,75 @@ function DeploymentVisual({ phase }: { phase: number }) {
   if (phase === 1) {
     return (
       <div key="p1" className={fadeClass}>
-        <div className="w-full max-w-[320px] bg-[#1a202c] border border-[#0a66c2]/30 rounded-xl p-6 shadow-[0_0_30px_rgba(10,102,194,0.1)]">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-tr from-[#0a66c2]/50 to-[#0a66c2]/10 border border-[#0a66c2]/40" />
-            <div className="flex-1">
-              <div className="h-3 w-3/4 bg-white/20 rounded mb-2" />
-              <div className="h-2 w-1/2 bg-[#0a66c2]/40 rounded" />
+        <div className="w-full max-w-[340px] bg-[#161920] border border-white/10 rounded-xl p-6 shadow-2xl relative z-10 group">
+          {/* Badge */}
+          <div className="absolute -top-3 -right-3 bg-[#f4f4f2] text-[#0a0a0a] text-[11px] font-bold px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(244,244,242,0.3)] flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+            Sistema Activo
+          </div>
+          
+          {/* Top Navbar / Dashboard Header */}
+          <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/5">
+            <div className="flex items-center gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#93a7c6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+              <div className="text-[10px] font-mono tracking-widest text-[#869ab5] uppercase">Command Center</div>
+            </div>
+            <div className="flex gap-1">
+              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
+              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
+              <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
             </div>
           </div>
-          <div className="bg-[#121620] rounded p-4 border border-white/5">
-            <div className="text-[10px] font-mono text-gray-500 mb-2">SECCIÓN DESTACADA</div>
-            <div className="h-20 w-full bg-white/5 rounded" />
+          
+          {/* Dashboard Grid */}
+          <div className="grid grid-cols-2 gap-3 mb-3">
+             {/* Metric 1 */}
+             <div className="bg-white/5 border border-white/5 rounded-lg p-3">
+                <div className="h-1.5 w-1/2 bg-white/20 rounded mb-3" />
+                <div className="flex items-end gap-1 h-6">
+                   <div className="w-1/4 bg-[#93a7c6]/40 h-[40%] rounded-sm" />
+                   <div className="w-1/4 bg-[#93a7c6]/60 h-[70%] rounded-sm" />
+                   <div className="w-1/4 bg-[#93a7c6]/80 h-[50%] rounded-sm" />
+                   <div className="w-1/4 bg-[#93a7c6] h-[100%] rounded-sm transition-all duration-1000 group-hover:h-[80%]" />
+                </div>
+             </div>
+             {/* Metric 2 */}
+             <div className="bg-white/5 border border-white/5 rounded-lg p-3 flex flex-col justify-between">
+                <div className="h-1.5 w-1/2 bg-white/20 rounded mb-2" />
+                <div>
+                   <div className="text-[16px] font-mono text-[#f4f4f2] leading-none mb-1.5">100%</div>
+                   <div className="h-1 w-full bg-white/10 rounded overflow-hidden">
+                      <div className="h-full w-full bg-green-500/50" />
+                   </div>
+                </div>
+             </div>
+          </div>
+          
+          {/* List/SOPs */}
+          <div className="bg-white/5 border border-white/5 rounded-lg p-3 space-y-2.5">
+             <div className="flex items-center gap-2">
+                <div className="w-3.5 h-3.5 rounded bg-[#93a7c6]/20 flex items-center justify-center">
+                   <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#93a7c6" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div className="h-1.5 w-3/4 bg-white/20 rounded" />
+             </div>
+             <div className="flex items-center gap-2">
+                <div className="w-3.5 h-3.5 rounded bg-[#93a7c6]/20 flex items-center justify-center">
+                   <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#93a7c6" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div className="h-1.5 w-1/2 bg-white/20 rounded" />
+             </div>
+             <div className="flex items-center gap-2">
+                <div className="w-3.5 h-3.5 rounded bg-[#93a7c6]/20 flex items-center justify-center">
+                   <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#93a7c6" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <div className="h-1.5 w-2/3 bg-white/20 rounded" />
+             </div>
+          </div>
+          
+          {/* Floating settings gear */}
+          <div className="absolute -left-5 top-2/3 -translate-y-1/2 w-10 h-10 bg-[#121316] border border-white/10 rounded-xl flex items-center justify-center shadow-xl group-hover:rotate-180 transition-transform duration-1000">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#93a7c6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
           </div>
         </div>
       </div>
