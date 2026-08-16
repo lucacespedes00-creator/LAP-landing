@@ -378,6 +378,13 @@ function IdealPartnersSection() {
 
   return (
     <section className="w-[1300px] mx-auto px-6 lg:px-24 pt-24 pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
+      {/* Crosshairs */}
+      <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
+         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
+      </div>
+      <div className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
+         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
+      </div>
       {/* Header */}
       <div className="flex items-center gap-6 mb-16">
         <span className="text-[11px] font-mono tracking-[0.25em] text-[#869ab5] uppercase font-bold whitespace-nowrap">
@@ -502,6 +509,13 @@ function FAQSection() {
 
   return (
     <section className="w-[1300px] mx-auto px-6 lg:px-24 pt-24 pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
+      {/* Crosshairs */}
+      <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
+         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
+      </div>
+      <div className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
+         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
+      </div>
       {/* Header */}
       <div className="flex items-center gap-6 mb-16">
         <span className="text-[11px] font-mono tracking-[0.25em] text-[#869ab5] uppercase font-bold whitespace-nowrap">
@@ -664,6 +678,13 @@ function SolutionSection() {
 
   return (
     <section id="solucion" className="w-[1300px] mx-auto px-6 lg:px-24 py-24 flex flex-col relative z-10 border-t border-dashed border-white/10">
+      {/* Crosshairs */}
+      <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
+         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
+      </div>
+      <div className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
+         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
+      </div>
       {/* Header */}
       <div className="flex items-center gap-6 mb-16">
         <span className="text-[11px] font-mono tracking-[0.25em] text-[#869ab5] uppercase font-bold whitespace-nowrap">
@@ -756,6 +777,13 @@ function DeploymentSection() {
 
   return (
     <section id="proceso" className="w-[1300px] mx-auto px-6 lg:px-24 py-24 flex flex-col relative z-10 border-t border-dashed border-white/10">
+      {/* Crosshairs */}
+      <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
+         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
+      </div>
+      <div className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
+         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
+      </div>
       {/* Header */}
       <div className="flex items-center gap-6 mb-16">
         <span className="text-[11px] font-mono tracking-[0.25em] text-[#869ab5] uppercase font-bold whitespace-nowrap">
@@ -1143,7 +1171,14 @@ function YoutubeSection() {
   ];
 
   return (
-    <section id="playbooks" className="w-[1300px] mx-auto px-6 lg:px-24 pt-24 pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10 overflow-hidden">
+    <section id="playbooks" className="w-[1300px] mx-auto px-6 lg:px-24 pt-24 pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
+      {/* Crosshairs */}
+      <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
+         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
+      </div>
+      <div className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
+         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
+      </div>
       {/* Header */}
       <div className="flex items-center gap-6 mb-16">
         <span className="text-[11px] font-mono tracking-[0.25em] text-[#869ab5] uppercase font-bold whitespace-nowrap">
@@ -1216,6 +1251,13 @@ function VideoCard({ title, desc, thumb }: { title: string, desc: string, thumb:
 function AuditSection() {
   return (
     <section id="agenda" className="w-[1300px] mx-auto px-6 lg:px-24 pt-24 pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
+      {/* Crosshairs */}
+      <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
+         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
+      </div>
+      <div className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
+         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
+      </div>
       {/* Header text block */}
       <div className="mb-12 max-w-[600px]">
         <div className="text-[10px] font-mono tracking-[0.25em] text-[#869ab5] uppercase font-bold mb-6">
@@ -1305,6 +1347,13 @@ function AuditSection() {
 function FooterSection({ onNavigate }: { onNavigate?: (id: string) => void }) {
   return (
     <footer className="w-[1300px] mx-auto pt-24 pb-8 flex flex-col relative z-10 border-t border-dashed border-white/10 mt-12">
+      {/* Crosshairs */}
+      <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
+         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
+      </div>
+      <div className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
+         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
+      </div>
       <div className="flex flex-col md:flex-row justify-between items-start gap-16 px-6 lg:px-24 mb-24">
         {/* Left Col */}
         <div className="max-w-[320px]">
