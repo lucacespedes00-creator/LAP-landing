@@ -859,31 +859,45 @@ function SolutionSection() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
-        {/* Connecting line (desktop only) */}
-        <div className="absolute top-[100px] left-[16%] right-[16%] h-px bg-gradient-to-r from-transparent via-[#93a7c6]/30 to-transparent hidden md:block z-0 pointer-events-none" />
+      <div className="flex flex-col gap-16 lg:gap-24 relative max-w-[1000px] mx-auto mt-12">
+        {/* Connecting vertical line (desktop only) */}
+        <div className="absolute top-10 bottom-10 left-[50%] w-px bg-gradient-to-b from-transparent via-[#93a7c6]/20 to-transparent hidden lg:block z-0 pointer-events-none -translate-x-1/2" />
 
-        {steps.map((step, idx) => (
-          <div key={idx} className="bg-[#161920]/40 border border-white/5 rounded-2xl p-6 lg:p-8 flex flex-col hover:bg-white/[0.02] transition-all duration-300 relative group hover:-translate-y-1">
-             <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none" />
-             
-             {/* Visual Area */}
-             <div className="h-[200px] bg-gradient-to-b from-[#1a1d24] to-[#121316] rounded-xl border border-white/5 mb-8 flex flex-col shadow-inner relative z-10 overflow-hidden">
-               {step.visual}
-             </div>
+        {steps.map((step, idx) => {
+          const isEven = idx % 2 === 0;
+          return (
+            <div key={idx} className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-20 relative z-10 ${isEven ? '' : 'lg:flex-row-reverse'}`}>
+              
+              {/* Central Node for Timeline */}
+              <div className="absolute left-[50%] top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#161920] border-2 border-[#93a7c6]/50 hidden lg:flex items-center justify-center z-20">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#93a7c6]" />
+              </div>
 
-             <div className="flex items-end gap-4 mb-4 relative z-10">
-               <span className="text-[42px] font-serif font-medium leading-none text-[#93a7c6]/40 group-hover:text-[#93a7c6] transition-colors">{step.num}</span>
-               <h3 className="text-[22px] font-serif font-medium text-[#f4f4f2] leading-snug pb-1">{step.title}</h3>
-             </div>
-             
-             <div className="text-[10px] font-mono tracking-widest text-gray-500 uppercase mb-3 relative z-10 font-bold">{step.sub}</div>
-             
-             <p className="text-[14px] text-gray-400 leading-[1.6] relative z-10 font-['Space_Grotesk'] font-normal not-italic">
-               {step.desc}
-             </p>
-          </div>
-        ))}
+              {/* Text Area */}
+              <div className={`w-full lg:w-1/2 flex flex-col ${isEven ? 'lg:pr-8' : 'lg:pl-8'}`}>
+                <div className="flex items-end gap-4 mb-5">
+                  <span className="text-[56px] font-serif font-medium leading-none text-[#93a7c6]/20">{step.num}</span>
+                  <h3 className="text-[32px] font-serif font-medium text-[#f4f4f2] leading-snug pb-1">{step.title}</h3>
+                </div>
+                
+                <div className="text-[12px] font-mono tracking-widest text-[#869ab5] uppercase mb-4 font-bold">{step.sub}</div>
+                
+                <p className="text-[16px] text-gray-400 leading-[1.6] font-['Space_Grotesk'] font-normal not-italic max-w-[400px]">
+                  {step.desc}
+                </p>
+              </div>
+
+              {/* Visual Area */}
+              <div className="w-full lg:w-1/2">
+                <div className="h-[260px] bg-gradient-to-b from-[#1a1d24] to-[#121316] rounded-2xl border border-white/5 shadow-2xl relative overflow-hidden flex flex-col group hover:border-white/10 transition-colors">
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                  {step.visual}
+                </div>
+              </div>
+              
+            </div>
+          );
+        })}
       </div>
     </section>
   );
