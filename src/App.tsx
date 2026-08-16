@@ -1004,20 +1004,69 @@ function DeploymentVisual({ phase }: { phase: number }) {
   if (phase === 2) {
     return (
       <div key="p2" className={fadeClass}>
-        <div className="relative w-[300px] h-[200px]">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-12 bg-[#93a7c6] rounded-full flex items-center justify-center text-[#121620] shadow-[0_0_20px_#93a7c6]">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+        <div className="w-full max-w-[340px] bg-[#161920] border border-white/10 rounded-xl p-6 shadow-2xl relative z-10 group overflow-hidden">
+          {/* Badge */}
+          <div className="absolute -top-3 -right-3 bg-[#93a7c6] text-[#0a0a0a] text-[11px] font-bold px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(147,167,198,0.3)] flex items-center gap-2">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            En Ejecución
           </div>
-          
-          <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 300 200">
-            <path d="M150 50 Q 80 120 40 180" fill="none" stroke="#93a7c6" strokeWidth="2" strokeDasharray="4 4" className="opacity-50" />
-            <path d="M150 50 Q 150 120 150 180" fill="none" stroke="#93a7c6" strokeWidth="2" strokeDasharray="4 4" className="opacity-50" />
-            <path d="M150 50 Q 220 120 260 180" fill="none" stroke="#93a7c6" strokeWidth="2" strokeDasharray="4 4" className="opacity-50" />
-          </svg>
-          
-          <div className="absolute bottom-0 left-[40px] -translate-x-1/2 bg-[#1a202c] border border-white/10 px-4 py-2 rounded text-[11px] text-[#f4f4f2]">Outbound</div>
-          <div className="absolute bottom-0 left-[150px] -translate-x-1/2 bg-[#1a202c] border border-white/10 px-4 py-2 rounded text-[11px] text-[#f4f4f2]">Inbound</div>
-          <div className="absolute bottom-0 left-[260px] -translate-x-1/2 bg-[#1a202c] border border-white/10 px-4 py-2 rounded text-[11px] text-[#f4f4f2]">Social</div>
+
+          <div className="text-[10px] font-mono tracking-widest text-[#869ab5] uppercase mb-6 text-center border-b border-white/5 pb-4">
+            Multi-Channel Flow
+          </div>
+
+          {/* Flow Container */}
+          <div className="flex flex-col items-center relative mt-2">
+            
+            {/* Top Channels */}
+            <div className="flex justify-between w-full px-2 mb-10 relative z-10">
+               {/* Outbound */}
+               <div className="flex flex-col items-center gap-2">
+                  <div className="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center relative group-hover:border-[#93a7c6]/50 group-hover:bg-[#93a7c6]/5 transition-colors">
+                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#93a7c6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+                     <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-[#161920]" />
+                  </div>
+                  <span className="text-[9.5px] font-mono text-[#869ab5] uppercase">Outbound</span>
+               </div>
+               
+               {/* Inbound/Content */}
+               <div className="flex flex-col items-center gap-2 mt-4">
+                  <div className="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center relative group-hover:border-[#93a7c6]/50 group-hover:bg-[#93a7c6]/5 transition-colors delay-75">
+                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#93a7c6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                     <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-[#161920]" />
+                  </div>
+                  <span className="text-[9.5px] font-mono text-[#869ab5] uppercase">Contenido</span>
+               </div>
+               
+               {/* Nurturing */}
+               <div className="flex flex-col items-center gap-2">
+                  <div className="w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center relative group-hover:border-[#93a7c6]/50 group-hover:bg-[#93a7c6]/5 transition-colors delay-150">
+                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#93a7c6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 2.1l4 4-4 4"></path><path d="M3 12.2v-2a4 4 0 0 1 4-4h12.8M7 21.9l-4-4 4-4"></path><path d="M21 11.8v2a4 4 0 0 1-4 4H4.2"></path></svg>
+                     <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-[#161920]" />
+                  </div>
+                  <span className="text-[9.5px] font-mono text-[#869ab5] uppercase">Nutrición</span>
+               </div>
+            </div>
+
+            {/* Connecting lines SVG */}
+            <div className="absolute top-[48px] left-0 w-full h-[70px] pointer-events-none z-0">
+              <svg width="100%" height="100%" viewBox="0 0 292 70" preserveAspectRatio="none">
+                 <path d="M 40 0 Q 40 50 146 70" fill="none" stroke="#93a7c6" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-20 group-hover:opacity-60 transition-opacity" />
+                 <path d="M 146 16 L 146 70" fill="none" stroke="#93a7c6" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-20 group-hover:opacity-60 transition-opacity" />
+                 <path d="M 252 0 Q 252 50 146 70" fill="none" stroke="#93a7c6" strokeWidth="1.5" strokeDasharray="4 4" className="opacity-20 group-hover:opacity-60 transition-opacity" />
+              </svg>
+            </div>
+
+            {/* Target Conversion */}
+            <div className="relative z-10 w-full bg-gradient-to-b from-[#93a7c6]/10 to-transparent border border-white/5 rounded-xl p-5 flex flex-col items-center justify-center">
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#93a7c6]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="w-12 h-12 rounded-full bg-[#93a7c6] flex items-center justify-center mb-3 group-hover:scale-110 group-hover:shadow-[0_0_20px_#93a7c6] transition-all duration-500 relative z-10 text-[#161920]">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              </div>
+              <div className="text-[13px] text-[#f4f4f2] font-serif relative z-10">Generación de Llamadas</div>
+            </div>
+
+          </div>
         </div>
       </div>
     );
