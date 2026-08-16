@@ -166,10 +166,10 @@ Posicionamos a tu agencia B2B como la mejor y única opción de tus prospectos, 
               Agenda <ArrowRight className="w-4 h-4" />
             </button>
             <button 
-              onClick={() => scrollToSection('proceso')}
+              onClick={() => scrollToSection('playbooks')}
               className="w-full sm:w-auto px-7 py-3.5 rounded-[4px] text-[15px] font-medium border border-white/20 text-[#f4f4f2] hover:bg-white/5 transition-colors cursor-pointer"
             >
-              Resultados
+              Playbooks
             </button>
           </div>
 
@@ -456,11 +456,10 @@ function IdealPartnersSection() {
       {/* Footer CTA */}
       <div className="mt-16 pt-10 border-t border-dashed border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
          <p className="text-[14px] text-gray-400 font-['Space_Grotesk'] leading-[1.6] max-w-[500px]">
-           <span className="italic text-gray-300 mr-1">Not sure where you land?</span> 
-           Book the audit. We'll tell you straight whether the architecture is the right move for your business right now.
-         </p>
+           <span className="italic text-gray-300 mr-1">No estás seguro de que lado estás?</span> 
+           Aplicá para una auditoría. Te digo sin vueltas si la arquitectura es la adecuada para tu negocio en este momento.         </p>
          <button className="bg-[#f0f0f0] text-[#121316] px-8 py-4 rounded font-medium text-[14px] flex items-center gap-3 hover:bg-white transition-colors shrink-0 whitespace-nowrap">
-            Book a Growth Architecture Audit
+            Aplica para una auditoría de captación
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="translate-y-[1px]">
                <line x1="5" y1="12" x2="19" y2="12"></line>
                <polyline points="12 5 19 12 12 19"></polyline>
