@@ -768,9 +768,9 @@ function DeploymentSection() {
     { 
       id: 5, 
       timeframe: "SEMANA 3+", 
-      title: "Trackeo y Mejora", 
-      heading: "Medimos, ajustamos y escalamos.", 
-      desc: "Monitoreamos las tasas de apertura y respuesta. Optimizamos cada etapa del embudo hasta lograr un flujo estable de 3 a 10 llamadas agendadas por semana." 
+      title: "Cada Sprint, más Afilado", 
+      heading: "Cada Sprint, más Afilado.", 
+      desc: "Lo que empezó como primera data se convierte en un proceso constante. Monitoreamos tasas de apertura y respuesta, ajustamos cada etapa del embudo, y llevamos el sistema a un flujo estable de 3 a 10 llamadas agendadas por semana." 
     }
   ];
 
@@ -1159,17 +1159,37 @@ function DeploymentVisual({ phase }: { phase: number }) {
   if (phase === 4) {
     return (
       <div key="p4" className={fadeClass}>
-        <div className="w-full max-w-[320px] bg-[#1a202c] border border-white/5 rounded-xl p-6 shadow-2xl flex flex-col items-center">
-          <div className="text-[48px] font-serif font-medium text-[#f4f4f2] mb-2 leading-none flex items-start">
-            <span className="text-[24px] text-[#93a7c6] mt-2 mr-1">+</span>
+        <div className="w-full max-w-[340px] bg-[#161920] border border-white/10 rounded-xl p-8 shadow-[0_0_40px_rgba(0,0,0,0.5)] relative z-10 group flex flex-col items-center">
+          
+          {/* Glowing orb background */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#93a7c6]/10 rounded-full blur-[40px] pointer-events-none" />
+
+          <div className="text-[72px] font-serif font-medium text-[#f4f4f2] mb-3 leading-none flex items-start justify-center mt-2 relative z-10">
+            <span className="text-[28px] text-[#869ab5] mt-4 mr-1.5 font-sans font-normal">+</span>
             <span>7</span>
           </div>
-          <div className="text-[12px] font-mono text-gray-400 uppercase tracking-widest mb-8">Llamadas agendadas</div>
           
-          <div className="w-full flex justify-between items-end h-[60px] gap-2 border-b border-white/10 pb-2">
-            {[30, 45, 25, 60, 40, 80, 100].map((h, i) => (
-              <div key={i} className={`w-full rounded-t-sm transition-all ${i === 6 ? 'bg-[#93a7c6] shadow-[0_0_10px_#93a7c6]' : 'bg-white/10'}`} style={{ height: `${h}%` }} />
-            ))}
+          <div className="text-[11px] font-mono text-[#869ab5] uppercase tracking-[0.2em] mb-12 text-center relative z-10 font-bold">
+            Llamadas Agendadas
+          </div>
+          
+          {/* Chart */}
+          <div className="w-full flex justify-between items-end h-[80px] gap-[6px] border-b border-white/10 pb-3 relative z-10">
+            {/* Bars */}
+            {[20, 35, 15, 45, 30, 60, 100].map((h, i) => {
+              const isActive = i === 6;
+              return (
+                <div 
+                  key={i} 
+                  className={`w-full rounded-t-[3px] transition-all duration-700 ease-out ${
+                    isActive 
+                      ? 'bg-gradient-to-t from-[#93a7c6]/40 to-[#c5d4ea] shadow-[0_0_20px_rgba(147,167,198,0.5)]' 
+                      : 'bg-[#869ab5]/10 group-hover:bg-[#869ab5]/20'
+                  }`} 
+                  style={{ height: `${h}%` }} 
+                />
+              );
+            })}
           </div>
         </div>
       </div>
@@ -1395,29 +1415,28 @@ function FooterSection({ onNavigate }: { onNavigate?: (id: string) => void }) {
              <span>Linked Acquisition Partner</span>
            </div>
            <p className="text-[11.5px] font-mono leading-[1.8] text-gray-400">
-             A B2B growth partner. We build<br/>
-             and run the complete system<br/>
-             that turns cold outreach into<br/>
-             qualified pipeline, then hand<br/>
-             you the keys.
+             Agencia B2B growth partner.<br/>
+             Instalamos y operamos el sistema <br />
+             completo que genera y convierte <br />
+             la atencion en llamadas calificadas.
            </p>
         </div>
 
         {/* Right Cols */}
         <div className="flex gap-20">
            <div className="flex flex-col gap-4">
-              <span className="text-[10px] font-mono tracking-[0.2em] text-gray-500 uppercase font-bold mb-2">Company</span>
-              <button onClick={() => onNavigate?.('proceso')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Process</button>
-              <button onClick={() => onNavigate?.('solucion')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Results</button>
+              <span className="text-[10px] font-mono tracking-[0.2em] text-gray-500 uppercase font-bold mb-2">Agencia</span>
+              <button onClick={() => onNavigate?.('proceso')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Proceso</button>
+              <button onClick={() => onNavigate?.('solucion')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Resultados</button>
               <a href="#" className="text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors">ROI calculator</a>
               <button onClick={() => onNavigate?.('solucion')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Services</button>
               <button onClick={() => onNavigate?.('playbooks')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Blog</button>
               <a href="#" className="text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors">Careers</a>
            </div>
            <div className="flex flex-col gap-4">
-              <span className="text-[10px] font-mono tracking-[0.2em] text-gray-500 uppercase font-bold mb-2">Connect</span>
-              <button onClick={() => onNavigate?.('agenda')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Book a call</button>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors">LinkedIn</a>
+              <span className="text-[10px] font-mono tracking-[0.2em] text-gray-500 uppercase font-bold mb-2">Conecta</span>
+              <button onClick={() => onNavigate?.('agenda')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Agenda</button>
+              <a href="https://www.linkedin.com/in/luca-cespedes/" target="_blank" rel="noopener noreferrer" className="text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors">LinkedIn</a>
            </div>
         </div>
       </div>
