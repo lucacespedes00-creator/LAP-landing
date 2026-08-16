@@ -348,6 +348,8 @@ Aunque algunos prospectos ya te conozcan, no hay un sistema que transforme esa a
 
         <IdealPartnersSection />
 
+        <ComparisonSection />
+
         <FAQSection />
 
         <AuditSection />
@@ -361,19 +363,19 @@ Aunque algunos prospectos ya te conozcan, no hay un sistema que transforme esa a
 
 function IdealPartnersSection() {
   const bestFit = [
-    "B2B services across finance, SaaS, agencies, and professional services",
-    "A market of 100K+ contacts. Clients with multiple targetable segments compound the results",
-    "$15K+ LTV per customer",
-    "Proven sales process in place. A sales team or in-house AEs maximize results",
-    "Product-market fit achieved"
+    "Empresas B2B de Servicios, agencias, y consultores profesionales",
+    "Una base amplia de clientes potenciales activos en LinkedIn",
+    "$5K+ LTV por cliente",
+    "Proceso de ventas probado en marcha",
+    "Product-market fit ya alcanzado"
   ];
 
   const notFit = [
-    "Total addressable market under 100K contacts",
-    "LTV under $15K (the economics don't carry the system)",
-    "No follow-up motion behind the outreach",
-    "Pre-product-market fit or pre-launch",
-    "Inconsistent offer or shifting positioning"
+    "Mercado objetivo con pocos perfiles en LinkedIn",
+    "LTV menor a $3K",
+    "Sin proceso de seguimiento detrás del outreach",
+    "Pre-product-market fit o pre-lanzamiento",
+    "Oferta inconsistente o posicionamiento cambiante"
   ];
 
   return (
@@ -395,11 +397,10 @@ function IdealPartnersSection() {
 
       <div className="max-w-[700px] mb-16">
         <h2 className="text-[40px] md:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-6">
-          Who we're built <span className="italic text-[#93a7c6] font-normal">for</span>.
+          Para quienes <br /><span className="italic text-[#93a7c6] font-normal">estamos hechos</span>
         </h2>
         <p className="text-gray-400 text-[16.5px] leading-[1.6] font-['Space_Grotesk'] font-normal not-italic">
-          The Growth OS isn't a fit for everyone. It's a fit for B2B service businesses with enough market to scale into and enough deal economics to make a unified system pay for itself. The checklist below is how we screen new partners.
-        </p>
+Esta arquitectura no es para todos. Es para agencias B2B con mercado suficiente para escalar y una economía de negocio que justifique instalar un sistema completo de autoridad y captación. El checklist de abajo es cómo evaluamos a nuevos socios.        </p>
       </div>
 
       {/* Grid container */}
@@ -413,7 +414,7 @@ function IdealPartnersSection() {
                   <polyline points="20 6 9 17 4 12" />
                </svg>
             </div>
-            <span className="text-[11px] font-mono tracking-widest text-[#869ab5] uppercase font-semibold">Best Fit</span>
+            <span className="text-[11px] font-mono tracking-widest text-[#869ab5] uppercase font-semibold">Buen Fit</span>
           </div>
           <ul className="flex flex-col">
             {bestFit.map((item, idx) => (
@@ -436,7 +437,7 @@ function IdealPartnersSection() {
                   <line x1="6" y1="6" x2="18" y2="18" />
                </svg>
             </div>
-            <span className="text-[11px] font-mono tracking-widest text-gray-500 uppercase font-semibold">Not a Fit</span>
+            <span className="text-[11px] font-mono tracking-widest text-gray-500 uppercase font-semibold">Mal Fit</span>
           </div>
           <ul className="flex flex-col">
             {notFit.map((item, idx) => (
@@ -465,6 +466,136 @@ function IdealPartnersSection() {
                <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
          </button>
+      </div>
+    </section>
+  );
+}
+
+function ComparisonSection() {
+  const [activeTab, setActiveTab] = useState(0);
+  
+  const rainmakingPoints = [
+    "Sistema completo: contenido + prospección + gestión de pipeline",
+    "Previsibilidad real: sabés cuántas conversaciones y llamadas tendrás cada semana",
+    "Liberás tu tiempo: gestionamos mensajes, seguimiento y clasificación de leads",
+    "Contenido + prospección trabajan juntos: no solo visibilidad, sino oportunidades reales",
+    "Métricas que importan: conversaciones, llamadas calificadas y clientes cerrados"
+  ];
+
+  const alternatives = [
+    {
+      id: 'agencias',
+      title: "Agencias de Contenido",
+      points: [
+        "Solo contenido: esperás a que lleguen leads por suerte",
+        "Resultados impredecibles: dependés de \"viralidad\"",
+        "Seguís gestionando mensajes y conversaciones vos mismo",
+        "Mucha visibilidad, cero prospección activa",
+        "Te venden métricas de vanidad: likes, comentarios, seguidores"
+      ]
+    },
+    {
+      id: 'equipo',
+      title: "Equipo Interno",
+      points: [
+        "Alto costo fijo mensual (+ onboarding y capacitación)",
+        "Dependen de vos para estrategia, mensajes y seguimiento",
+        "No tienen metodología específica de captación en LinkedIn",
+        "Difícil mantener ritmo: vacaciones, rotación, burnout",
+        "Lento de implementar: 2-3 meses hasta que empiezan a rendir"
+      ]
+    },
+    {
+      id: 'solo',
+      title: "Hacerlo Vos Solo",
+      points: [
+        "Dependés 100% de tu tiempo y energía",
+        "No podés mantener la misma constancia todas las semanas",
+        "Difícil clasificar leads y saber qué conversaciones priorizar",
+        "Seguimiento inconsistente → se caen oportunidades",
+        "Crecimiento limitado: si vos parás, la captación muere"
+      ]
+    }
+  ];
+
+  return (
+    <section className="w-[1300px] mx-auto px-6 lg:px-24 pt-24 pb-32 flex flex-col items-center relative z-10 border-t border-dashed border-white/10">
+      {/* Crosshairs */}
+      <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
+         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
+      </div>
+      <div className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
+         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
+      </div>
+
+      <div className="text-center mb-16">
+        <h2 className="text-[40px] md:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2]">
+          Por Qué Rainmaking vs <br />
+          <span className="italic text-[#93a7c6] font-normal">Otras Alternativas</span>
+        </h2>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 w-full max-w-[1100px] mx-auto items-start">
+        {/* Left Column - Rainmaking */}
+        <div className="bg-[#121316] border border-[#93a7c6]/30 rounded-2xl p-8 lg:p-10 shadow-[0_0_30px_rgba(147,167,198,0.05)] relative overflow-hidden">
+          {/* Subtle glow */}
+          <div className="absolute -top-20 -left-20 w-40 h-40 bg-[#93a7c6]/10 rounded-full blur-[50px] pointer-events-none" />
+          
+          <h3 className="text-[24px] font-serif font-medium text-[#f4f4f2] mb-8 text-center relative z-10">Rainmaking</h3>
+          
+          <ul className="space-y-6 relative z-10">
+            {rainmakingPoints.map((point, idx) => (
+              <li key={idx} className="flex items-start gap-4 text-[14.5px] text-gray-200 leading-[1.6]">
+                <div className="w-5 h-5 rounded-full bg-[#93a7c6]/10 border border-[#93a7c6]/30 flex items-center justify-center shrink-0 mt-[2px]">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93a7c6" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Right Column - Alternatives */}
+        <div className="flex flex-col min-h-[460px]">
+          {/* Tabs */}
+          <div className="flex items-center gap-6 mb-6 border-b border-white/10 overflow-x-auto scrollbar-hide pb-0">
+            {alternatives.map((alt, idx) => (
+              <button
+                key={alt.id}
+                onClick={() => setActiveTab(idx)}
+                className={`text-[13px] font-medium pb-4 transition-colors relative whitespace-nowrap cursor-pointer ${
+                  activeTab === idx ? 'text-[#f4f4f2]' : 'text-gray-500 hover:text-gray-300'
+                }`}
+              >
+                {alt.title}
+                {activeTab === idx && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#93a7c6] rounded-t-full shadow-[0_0_10px_rgba(147,167,198,0.5)]" />
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Tab Content Card */}
+          <div className="bg-[#161920]/40 border border-white/5 rounded-2xl p-8 lg:p-10 flex flex-col transition-all duration-300 flex-1">
+            <h3 className="text-[20px] font-serif font-medium text-[#f4f4f2] mb-8">{alternatives[activeTab].title}</h3>
+            
+            <ul className="space-y-6">
+              {alternatives[activeTab].points.map((point, idx) => (
+                <li key={idx} className="flex items-start gap-4 text-[14.5px] text-gray-400 leading-[1.6]">
+                  <div className="w-5 h-5 rounded-full bg-red-400/10 border border-red-400/20 flex items-center justify-center shrink-0 mt-[2px]">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#f87171" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                  </div>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   );
