@@ -6,14 +6,56 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 
+const navItems = [
+  { id: 'problema', label: 'EL PROBLEMA' },
+  { id: 'solucion', label: 'LA SOLUCIÓN' },
+  { id: 'proceso', label: 'EL PROCESO' },
+  { id: 'playbooks', label: 'PLAYBOOKS' },
+];
+
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('problema');
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const navHeight = 90;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      setActiveSection(id);
+    }
+  };
 
   useEffect(() => {
+    const sectionIds = ['problema', 'solucion', 'proceso', 'playbooks'];
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+
+      const triggerPoint = window.innerHeight * 0.35;
+      let currentActive = 'problema';
+
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= triggerPoint) {
+            currentActive = id;
+          }
+        }
+      }
+
+      setActiveSection(currentActive);
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -28,21 +70,37 @@ export default function App() {
             ? 'max-w-[900px] bg-[#1a1c20]/80 backdrop-blur-md border border-white/5 rounded-xl px-6 py-3 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.5)]' 
             : 'max-w-[1400px] px-10 md:px-16 lg:px-24 py-8 bg-transparent border-transparent'
         }`}>
-          <div className="flex items-center">
+          <div 
+            className="flex items-center cursor-pointer" 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
             <img src="/lap-logo.png" alt="LAP Logo" className="h-10 object-contain" />
           </div>
           
-          <div className="hidden md:flex items-center gap-10 text-[10.5px] font-mono tracking-[0.2em] text-gray-400 uppercase">
-            <a href="#" className="relative text-[#93a7c6] font-bold hover:text-[#f4f4f2] transition-colors">
-              EL PROBLEMA
-              <div className="absolute -bottom-2 left-0 right-0 h-px bg-[#93a7c6]" />
-            </a>
-            <a href="#" className="hover:text-[#f4f4f2] transition-colors font-bold">LA SOLUCIÓN</a>
-            <a href="#" className="hover:text-[#f4f4f2] transition-colors font-bold">EL PROCESO</a>
-            <a href="#" className="hover:text-[#f4f4f2] transition-colors font-bold">PLAYBOOKS</a>
+          <div className="hidden md:flex items-center gap-10 text-[10.5px] font-mono tracking-[0.2em] uppercase">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`relative transition-colors font-bold cursor-pointer uppercase ${
+                    isActive ? 'text-[#93a7c6]' : 'text-gray-400 hover:text-[#f4f4f2]'
+                  }`}
+                >
+                  {item.label}
+                  {isActive && (
+                    <div className="absolute -bottom-2 left-0 right-0 h-px bg-[#93a7c6]" />
+                  )}
+                </button>
+              );
+            })}
           </div>
           
-          <button className="bg-white text-black px-6 py-2.5 rounded-[4px] text-[13px] font-medium flex items-center gap-2 hover:bg-gray-100 transition-colors">
+          <button 
+            onClick={() => scrollToSection('agenda')}
+            className="bg-white text-black px-6 py-2.5 rounded-[4px] text-[13px] font-medium flex items-center gap-2 hover:bg-gray-100 transition-colors cursor-pointer"
+          >
             Agenda <ArrowRight className="w-4 h-4" />
           </button>
         </nav>
@@ -100,10 +158,16 @@ Posicionamos a tu agencia B2B como la mejor y única opción de tus prospectos, 
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12 z-10">
-            <button className="w-full sm:w-auto bg-white text-black px-7 py-3.5 rounded-[4px] text-[15px] font-medium flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors">
+            <button 
+              onClick={() => scrollToSection('agenda')}
+              className="w-full sm:w-auto bg-white text-black px-7 py-3.5 rounded-[4px] text-[15px] font-medium flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors cursor-pointer"
+            >
               Agenda <ArrowRight className="w-4 h-4" />
             </button>
-            <button className="w-full sm:w-auto px-7 py-3.5 rounded-[4px] text-[15px] font-medium border border-white/20 text-[#f4f4f2] hover:bg-white/5 transition-colors">
+            <button 
+              onClick={() => scrollToSection('proceso')}
+              className="w-full sm:w-auto px-7 py-3.5 rounded-[4px] text-[15px] font-medium border border-white/20 text-[#f4f4f2] hover:bg-white/5 transition-colors cursor-pointer"
+            >
               Resultados
             </button>
           </div>
@@ -123,7 +187,7 @@ Posicionamos a tu agencia B2B como la mejor y única opción de tus prospectos, 
         </div>
 
         {/* THE PROBLEM SECTION */}
-        <section className="w-[1300px] mx-auto px-6 lg:px-24 py-24 flex flex-col relative z-10">
+        <section id="problema" className="w-[1300px] mx-auto px-6 lg:px-24 py-24 flex flex-col relative z-10">
           
           {/* Header */}
           <div className="flex items-center gap-6 mb-16">
@@ -287,7 +351,7 @@ Aunque algunos prospectos ya te conozcan, no hay un sistema que transforme esa a
 
         <AuditSection />
 
-        <FooterSection />
+        <FooterSection onNavigate={scrollToSection} />
 
       </div>
     </div>
@@ -598,7 +662,7 @@ function SolutionSection() {
   ];
 
   return (
-    <section className="w-[1300px] mx-auto px-6 lg:px-24 py-24 flex flex-col relative z-10 border-t border-dashed border-white/10">
+    <section id="solucion" className="w-[1300px] mx-auto px-6 lg:px-24 py-24 flex flex-col relative z-10 border-t border-dashed border-white/10">
       {/* Header */}
       <div className="flex items-center gap-6 mb-16">
         <span className="text-[11px] font-mono tracking-[0.25em] text-[#869ab5] uppercase font-bold whitespace-nowrap">
@@ -690,7 +754,7 @@ function DeploymentSection() {
   ];
 
   return (
-    <section className="w-[1300px] mx-auto px-6 lg:px-24 py-24 flex flex-col relative z-10 border-t border-dashed border-white/10">
+    <section id="proceso" className="w-[1300px] mx-auto px-6 lg:px-24 py-24 flex flex-col relative z-10 border-t border-dashed border-white/10">
       {/* Header */}
       <div className="flex items-center gap-6 mb-16">
         <span className="text-[11px] font-mono tracking-[0.25em] text-[#869ab5] uppercase font-bold whitespace-nowrap">
@@ -937,7 +1001,7 @@ function YoutubeSection() {
   ];
 
   return (
-    <section className="w-[1300px] mx-auto px-6 lg:px-24 pt-24 pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10 overflow-hidden">
+    <section id="playbooks" className="w-[1300px] mx-auto px-6 lg:px-24 pt-24 pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10 overflow-hidden">
       {/* Header */}
       <div className="flex items-center gap-6 mb-16">
         <span className="text-[11px] font-mono tracking-[0.25em] text-[#869ab5] uppercase font-bold whitespace-nowrap">
@@ -1009,7 +1073,7 @@ function VideoCard({ title, desc, thumb }: { title: string, desc: string, thumb:
 
 function AuditSection() {
   return (
-    <section className="w-[1300px] mx-auto px-6 lg:px-24 pt-24 pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
+    <section id="agenda" className="w-[1300px] mx-auto px-6 lg:px-24 pt-24 pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
       {/* Header text block */}
       <div className="mb-12 max-w-[600px]">
         <div className="text-[10px] font-mono tracking-[0.25em] text-[#869ab5] uppercase font-bold mb-6">
@@ -1096,7 +1160,7 @@ function AuditSection() {
   );
 }
 
-function FooterSection() {
+function FooterSection({ onNavigate }: { onNavigate?: (id: string) => void }) {
   return (
     <footer className="w-[1300px] mx-auto pt-24 pb-8 flex flex-col relative z-10 border-t border-dashed border-white/10 mt-12">
       <div className="flex flex-col md:flex-row justify-between items-start gap-16 px-6 lg:px-24 mb-24">
@@ -1119,17 +1183,17 @@ function FooterSection() {
         <div className="flex gap-20">
            <div className="flex flex-col gap-4">
               <span className="text-[10px] font-mono tracking-[0.2em] text-gray-500 uppercase font-bold mb-2">Company</span>
-              <a href="#" className="text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors">Process</a>
-              <a href="#" className="text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors">Results</a>
+              <button onClick={() => onNavigate?.('proceso')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Process</button>
+              <button onClick={() => onNavigate?.('solucion')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Results</button>
               <a href="#" className="text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors">ROI calculator</a>
-              <a href="#" className="text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors">Services</a>
-              <a href="#" className="text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors">Blog</a>
+              <button onClick={() => onNavigate?.('solucion')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Services</button>
+              <button onClick={() => onNavigate?.('playbooks')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Blog</button>
               <a href="#" className="text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors">Careers</a>
            </div>
            <div className="flex flex-col gap-4">
               <span className="text-[10px] font-mono tracking-[0.2em] text-gray-500 uppercase font-bold mb-2">Connect</span>
-              <a href="#" className="text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors">Book a call</a>
-              <a href="#" className="text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors">LinkedIn</a>
+              <button onClick={() => onNavigate?.('agenda')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Book a call</button>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors">LinkedIn</a>
            </div>
         </div>
       </div>
