@@ -541,7 +541,7 @@ function ComparisonSection() {
 
       <div className="max-w-[700px] mb-16">
         <h2 className="text-[40px] md:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-6">
-          Por Qué Rainmaking vs <br />
+          Por Qué LAP vs <br />
           <span className="italic text-[#93a7c6] font-normal">Otras Alternativas</span>
         </h2>
       </div>
@@ -859,38 +859,29 @@ function SolutionSection() {
         </p>
       </div>
 
-      <div className="flex flex-col gap-6 w-full max-w-[1100px] mx-auto mt-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+        {/* Connecting line (desktop only) */}
+        <div className="absolute top-[100px] left-[16%] right-[16%] h-px bg-gradient-to-r from-transparent via-[#93a7c6]/30 to-transparent hidden md:block z-0 pointer-events-none" />
+
         {steps.map((step, idx) => (
-          <div key={idx} className="bg-[#161920]/40 border border-white/5 rounded-2xl flex flex-col md:flex-row overflow-hidden hover:bg-white/[0.02] transition-colors group">
+          <div key={idx} className="bg-[#161920]/40 border border-white/5 rounded-2xl p-6 lg:p-8 flex flex-col hover:bg-white/[0.02] transition-all duration-300 relative group hover:-translate-y-1">
+             <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none" />
              
-             {/* Text Side */}
-             <div className="w-full md:w-1/2 p-8 lg:p-12 flex flex-col justify-center border-b md:border-b-0 md:border-r border-white/5 relative">
-                {/* Subtle highlight */}
-                <div className="absolute inset-0 bg-gradient-to-r from-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                
-                <div className="flex items-center gap-4 mb-8">
-                  <span className="text-[18px] font-mono font-bold tracking-widest text-[#93a7c6]/60 group-hover:text-[#93a7c6] transition-colors">{step.num}</span>
-                  <div className="h-px flex-1 bg-gradient-to-r from-[#93a7c6]/20 to-transparent" />
-                </div>
-                
-                <div className="text-[11px] font-mono tracking-[0.2em] text-[#869ab5] uppercase mb-4 font-bold">{step.sub}</div>
-                <h3 className="text-[32px] md:text-[36px] font-serif font-medium text-[#f4f4f2] leading-tight mb-5">{step.title}</h3>
-                
-                <p className="text-[15.5px] text-gray-400 font-['Space_Grotesk'] leading-[1.6]">
-                  {step.desc}
-                </p>
+             {/* Visual Area */}
+             <div className="h-[200px] bg-gradient-to-b from-[#1a1d24] to-[#121316] rounded-xl border border-white/5 mb-8 flex flex-col shadow-inner relative z-10 overflow-hidden">
+               {step.visual}
+             </div>
+
+             <div className="flex items-end gap-4 mb-4 relative z-10">
+               <span className="text-[42px] font-serif font-medium leading-none text-[#93a7c6]/40 group-hover:text-[#93a7c6] transition-colors">{step.num}</span>
+               <h3 className="text-[22px] font-serif font-medium text-[#f4f4f2] leading-snug pb-1">{step.title}</h3>
              </div>
              
-             {/* Visual Side */}
-             <div className="w-full md:w-1/2 bg-gradient-to-br from-[#1a1d24]/80 to-[#121316] relative min-h-[300px] flex flex-col items-center justify-center p-8">
-                {/* Glow behind visual */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#93a7c6]/5 rounded-full blur-[60px] pointer-events-none group-hover:bg-[#93a7c6]/10 transition-colors duration-700" />
-                
-                <div className="relative z-10 w-full max-w-[320px] h-full flex flex-col">
-                  {step.visual}
-                </div>
-             </div>
+             <div className="text-[10px] font-mono tracking-widest text-gray-500 uppercase mb-3 relative z-10 font-bold">{step.sub}</div>
              
+             <p className="text-[14px] text-gray-400 leading-[1.6] relative z-10 font-['Space_Grotesk'] font-normal not-italic">
+               {step.desc}
+             </p>
           </div>
         ))}
       </div>
@@ -1583,7 +1574,7 @@ function FooterSection({ onNavigate }: { onNavigate?: (id: string) => void }) {
              Agencia B2B growth partner.<br/>
              Instalamos y operamos el sistema <br />
              completo que genera y convierte <br />
-             la atencion en llamadas calificadas.
+             atencion en llamadas calificadas.
            </p>
         </div>
 
