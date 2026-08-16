@@ -1004,7 +1004,7 @@ function DeploymentVisual({ phase }: { phase: number }) {
   if (phase === 2) {
     return (
       <div key="p2" className={fadeClass}>
-        <div className="w-full max-w-[340px] bg-[#161920] border border-white/10 rounded-xl p-6 shadow-2xl relative z-10 group overflow-hidden">
+        <div className="w-full max-w-[340px] bg-[#161920] border border-white/10 rounded-xl p-6 shadow-2xl relative z-10 group">
           {/* Badge */}
           <div className="absolute -top-3 -right-3 bg-[#93a7c6] text-[#0a0a0a] text-[11px] font-bold px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(147,167,198,0.3)] flex items-center gap-2">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
