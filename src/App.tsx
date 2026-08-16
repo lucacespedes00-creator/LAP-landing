@@ -117,13 +117,13 @@ export default function App() {
         
         {/* Left/Right Vertical Lines (Extend fully) */}
         <div className="absolute -top-[150px] bottom-0 left-6 lg:left-12 w-px border-l border-dashed border-white/10 hidden md:block" />
-        <div className="absolute -top-[150px] bottom-0 right-6 lg:right-12 w-px border-l border-dashed border-white/10 hidden md:block" />
+        <div className="absolute -top-[150px] bottom-0 right-6 lg:right-12 w-px border-r border-dashed border-white/10 hidden md:block" />
 
         {/* Crosshairs at top intersections */}
         <div className="absolute top-0 left-6 lg:left-12 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
         </div>
-        <div className="absolute top-0 right-6 lg:right-12 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
+        <div className="absolute top-0 right-6 lg:right-12 translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
         </div>
         
@@ -182,7 +182,7 @@ Posicionamos a tu agencia B2B como la mejor y única opción de tus prospectos, 
           <div className="absolute left-6 lg:left-12 top-0 -translate-x-1/2 -translate-y-1/2 text-white/40">
              <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
           </div>
-          <div className="absolute right-6 lg:right-12 top-0 -translate-x-1/2 -translate-y-1/2 text-white/40">
+          <div className="absolute right-6 lg:right-12 top-0 translate-x-1/2 -translate-y-1/2 text-white/40">
              <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
           </div>
         </div>
