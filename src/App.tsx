@@ -859,45 +859,40 @@ function SolutionSection() {
         </p>
       </div>
 
-      <div className="flex flex-col gap-16 lg:gap-24 relative max-w-[1000px] mx-auto mt-12">
-        {/* Connecting vertical line (desktop only) */}
-        <div className="absolute top-10 bottom-10 left-[50%] w-px bg-gradient-to-b from-transparent via-[#93a7c6]/20 to-transparent hidden lg:block z-0 pointer-events-none -translate-x-1/2" />
-
-        {steps.map((step, idx) => {
-          const isEven = idx % 2 === 0;
-          return (
-            <div key={idx} className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-20 relative z-10 ${isEven ? '' : 'lg:flex-row-reverse'}`}>
-              
-              {/* Central Node for Timeline */}
-              <div className="absolute left-[50%] top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#161920] border-2 border-[#93a7c6]/50 hidden lg:flex items-center justify-center z-20">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#93a7c6]" />
-              </div>
-
-              {/* Text Area */}
-              <div className={`w-full lg:w-1/2 flex flex-col ${isEven ? 'lg:pr-8' : 'lg:pl-8'}`}>
-                <div className="flex items-end gap-4 mb-5">
-                  <span className="text-[56px] font-serif font-medium leading-none text-[#93a7c6]/20">{step.num}</span>
-                  <h3 className="text-[32px] font-serif font-medium text-[#f4f4f2] leading-snug pb-1">{step.title}</h3>
+      <div className="flex flex-col gap-6 w-full max-w-[1100px] mx-auto mt-12">
+        {steps.map((step, idx) => (
+          <div key={idx} className="bg-[#161920]/40 border border-white/5 rounded-2xl flex flex-col md:flex-row overflow-hidden hover:bg-white/[0.02] transition-colors group">
+             
+             {/* Text Side */}
+             <div className="w-full md:w-1/2 p-8 lg:p-12 flex flex-col justify-center border-b md:border-b-0 md:border-r border-white/5 relative">
+                {/* Subtle highlight */}
+                <div className="absolute inset-0 bg-gradient-to-r from-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                
+                <div className="flex items-center gap-4 mb-8">
+                  <span className="text-[18px] font-mono font-bold tracking-widest text-[#93a7c6]/60 group-hover:text-[#93a7c6] transition-colors">{step.num}</span>
+                  <div className="h-px flex-1 bg-gradient-to-r from-[#93a7c6]/20 to-transparent" />
                 </div>
                 
-                <div className="text-[12px] font-mono tracking-widest text-[#869ab5] uppercase mb-4 font-bold">{step.sub}</div>
+                <div className="text-[11px] font-mono tracking-[0.2em] text-[#869ab5] uppercase mb-4 font-bold">{step.sub}</div>
+                <h3 className="text-[32px] md:text-[36px] font-serif font-medium text-[#f4f4f2] leading-tight mb-5">{step.title}</h3>
                 
-                <p className="text-[16px] text-gray-400 leading-[1.6] font-['Space_Grotesk'] font-normal not-italic max-w-[400px]">
+                <p className="text-[15.5px] text-gray-400 font-['Space_Grotesk'] leading-[1.6]">
                   {step.desc}
                 </p>
-              </div>
-
-              {/* Visual Area */}
-              <div className="w-full lg:w-1/2">
-                <div className="h-[260px] bg-gradient-to-b from-[#1a1d24] to-[#121316] rounded-2xl border border-white/5 shadow-2xl relative overflow-hidden flex flex-col group hover:border-white/10 transition-colors">
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+             </div>
+             
+             {/* Visual Side */}
+             <div className="w-full md:w-1/2 bg-gradient-to-br from-[#1a1d24]/80 to-[#121316] relative min-h-[300px] flex flex-col items-center justify-center p-8">
+                {/* Glow behind visual */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#93a7c6]/5 rounded-full blur-[60px] pointer-events-none group-hover:bg-[#93a7c6]/10 transition-colors duration-700" />
+                
+                <div className="relative z-10 w-full max-w-[320px] h-full flex flex-col">
                   {step.visual}
                 </div>
-              </div>
-              
-            </div>
-          );
-        })}
+             </div>
+             
+          </div>
+        ))}
       </div>
     </section>
   );
