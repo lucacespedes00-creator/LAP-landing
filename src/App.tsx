@@ -720,23 +720,23 @@ function DeploymentSection() {
     { 
       id: 1, 
       timeframe: "SEMANA 1", 
-      title: "Oferta Cold-Friendly", 
-      heading: "Diseñamos una oferta irresistible.", 
-      desc: "Analizamos tu mercado y adaptamos tu propuesta de valor para que resuene de inmediato y genere curiosidad en campañas de prospección en frío." 
+      title: "Sentamos las Bases", 
+      heading: "Sentamos las Bases.", 
+      desc: "Analizamos tu oferta actual, tu perfil y tu presencia general para identificar los puntos debiles. Optimizamos tu oferta y presentacion, mejoramos tu perfil y landing, para que todo vaya acorde su target y posicionamiento. Todo lo que sigue se apoya en estas bases." 
     },
     { 
       id: 2, 
-      timeframe: "SEMANA 1-2", 
-      title: "Perfil Profesional", 
-      heading: "Tu perfil como landing de conversión.", 
-      desc: "Optimizamos tu perfil de LinkedIn para generar autoridad absoluta. Cuando un prospecto investigue quién le escribió, encontrará a un experto indiscutible." 
+      timeframe: "SEMANA 2", 
+      title: "Instalamos la Arquitectura", 
+      heading: "Instalamos la Arquitectura.", 
+      desc: "Instalamos los sistemas que van a correr solos a partir de acá: dashboards de métricas, SOPs, y la infraestructura para lanzar campañas, crear contenido, publicar posts, construir tu lista de emails y generar recursos. No es trabajo manual repetido cada semana — es una arquitectura que, una vez instalada, sigue funcionando paso a paso con el tiempo." 
     },
     { 
       id: 3, 
-      timeframe: "SEMANA 2", 
-      title: "Lanzar Campañas", 
-      heading: "Encendemos el motor multicanal.", 
-      desc: "Ponemos en marcha las campañas outbound e inbound. Tu oferta calibrada empieza a llegar masivamente a los tomadores de decisión correctos." 
+      timeframe: "SEMANA 3", 
+      title: "Arranca la Ejecución", 
+      heading: "Arranca la Ejecución.", 
+      desc: "Arranca la ejecución: outbound saliendo a buscar tomadores de decisión, inbound generando atención con contenido, y todo el sistema trabajando en conjunto para atraer, nutrir y convertir." 
     },
     { 
       id: 4, 
@@ -876,14 +876,48 @@ function DeploymentVisual({ phase }: { phase: number }) {
   if (phase === 0) {
     return (
       <div key="p0" className={fadeClass}>
-        <div className="w-full max-w-[320px] bg-[#1a202c] border border-white/5 rounded-xl p-6 shadow-2xl relative">
-          <div className="absolute -top-3 -right-3 bg-[#93a7c6] text-black text-[10px] font-bold px-3 py-1 rounded-full">Re-estructuración</div>
-          <div className="w-12 h-12 bg-white/5 rounded-lg mb-4 flex items-center justify-center text-[#93a7c6]">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+        <div className="w-full max-w-[340px] bg-[#161920] border border-white/10 rounded-xl p-6 shadow-2xl relative z-10 group">
+          {/* Badge */}
+          <div className="absolute -top-3 -right-3 bg-[#93a7c6] text-[#0a0a0a] text-[11px] font-bold px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(147,167,198,0.3)]">
+            Re-estructuración
           </div>
-          <div className="h-2 w-3/4 bg-white/10 rounded mb-3" />
-          <div className="h-2 w-full bg-white/10 rounded mb-3" />
-          <div className="h-2 w-5/6 bg-[#93a7c6]/30 rounded" />
+          
+          {/* Header of wireframe: Profile */}
+          <div className="flex items-center gap-4 mb-6 pb-6 border-b border-white/5">
+             <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center relative">
+               <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-[#93a7c6] rounded-full flex items-center justify-center border-2 border-[#161920]">
+                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+               </div>
+             </div>
+             <div className="flex-1">
+                <div className="h-2.5 w-1/2 bg-[#f4f4f2]/80 rounded mb-2" />
+                <div className="h-2 w-3/4 bg-white/20 rounded" />
+             </div>
+          </div>
+          
+          {/* Body of wireframe: Offer / Landing text */}
+          <div className="space-y-3 mb-6">
+            <div className="flex items-center justify-between mb-4">
+              <div className="text-[10px] font-mono text-[#869ab5] uppercase tracking-widest">Oferta Optimizada</div>
+              <div className="h-4 w-4 rounded-sm bg-white/5 flex items-center justify-center">
+                 <div className="w-1.5 h-1.5 rounded-full bg-[#93a7c6]/50 animate-pulse" />
+              </div>
+            </div>
+            <div className="h-2 w-full bg-white/10 rounded" />
+            <div className="h-2 w-full bg-white/10 rounded" />
+            <div className="h-2 w-5/6 bg-white/10 rounded" />
+            <div className="h-2 w-4/6 bg-white/10 rounded" />
+          </div>
+
+          {/* CTA Button placeholder */}
+          <div className="h-9 w-full bg-[#93a7c6]/10 border border-[#93a7c6]/30 rounded flex items-center justify-center transition-colors group-hover:bg-[#93a7c6]/20">
+             <div className="h-1.5 w-1/4 bg-[#93a7c6]/60 rounded" />
+          </div>
+          
+          {/* Edit icon floating */}
+          <div className="absolute -left-5 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#121316] border border-white/10 rounded-xl flex items-center justify-center shadow-xl rotate-[-12deg] group-hover:rotate-[-5deg] transition-transform duration-300">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#93a7c6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          </div>
         </div>
       </div>
     );
