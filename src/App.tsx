@@ -129,6 +129,47 @@ export default function App() {
         
         <main className="flex-1 px-0 pt-[70px] pb-8 lg:pb-12 flex flex-col items-center justify-center relative">
           
+          {/* Dot Grid Background — contained within vertical lines, fades at edges */}
+          <div
+            className="absolute pointer-events-none z-0 hidden md:block"
+            style={{
+              top: 0,
+              bottom: 0,
+              left: '48px',
+              right: '48px',
+              backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px)',
+              backgroundSize: '14px 14px',
+              maskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%)',
+            }}
+          />
+
+          {/* White glow behind title area */}
+          <div
+            className="absolute pointer-events-none z-[1]"
+            style={{
+              top: '-40px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '900px',
+              height: '500px',
+              background: 'radial-gradient(ellipse 70% 60% at 50% 45%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 40%, transparent 70%)',
+            }}
+          />
+
+          {/* White glow behind video */}
+          <div
+            className="absolute pointer-events-none z-[1]"
+            style={{
+              top: '42%',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '950px',
+              height: '550px',
+              background: 'radial-gradient(ellipse 65% 55% at 50% 45%, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 45%, transparent 70%)',
+            }}
+          />
+
           {/* Centered Text Section */}
           <div className="w-full max-w-[700px] flex flex-col items-center text-center z-10">
             <div className="text-[11px] font-mono tracking-[0.25em] text-[#869ab5] mb-8 uppercase font-bold">
