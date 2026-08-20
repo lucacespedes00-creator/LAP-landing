@@ -137,8 +137,8 @@ export default function App() {
               bottom: 0,
               left: '48px',
               right: '48px',
-              backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px)',
-              backgroundSize: '14px 14px',
+              backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.12) 0.6px, transparent 1px)',
+              backgroundSize: '12px 12px',
               maskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%)',
               WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%)',
             }}
@@ -153,7 +153,7 @@ export default function App() {
               transform: 'translateX(-50%)',
               width: '900px',
               height: '500px',
-              background: 'radial-gradient(ellipse 70% 60% at 50% 45%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 40%, transparent 70%)',
+              background: 'radial-gradient(ellipse 75% 60% at 50% 55%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.03) 40%, transparent 70%)',
             }}
           />
 
