@@ -139,7 +139,7 @@ export default function App() {
               right: '48px',
               backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.12) 0.6px, transparent 1px)',
               backgroundSize: '12px 12px',
-              maskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%)',
+              maskImage: 'radial-gradient(ellipse 70% 50% at 50% 40%, black 30%, transparent 80%)',
               WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%)',
             }}
           />
