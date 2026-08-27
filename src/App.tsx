@@ -1537,6 +1537,28 @@ function VideoCard({ title, desc, thumb }: { title?: string, desc?: string, thum
 }
 
 function AuditSection() {
+  useEffect(() => {
+    const w = "https://tally.so/widgets/embed.js";
+    const v = function() {
+      if (typeof (window as any).Tally !== "undefined") {
+        (window as any).Tally.loadEmbeds();
+      } else {
+        document.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e) {
+          (e as HTMLIFrameElement).src = (e as HTMLIFrameElement).dataset.tallySrc || '';
+        });
+      }
+    };
+    if (typeof (window as any).Tally !== "undefined") {
+      v();
+    } else if (document.querySelector('script[src="' + w + '"]') == null) {
+      const s = document.createElement("script");
+      s.src = w;
+      s.onload = v;
+      s.onerror = v;
+      document.body.appendChild(s);
+    }
+  }, []);
+
   return (
     <section id="agenda" className="w-full max-w-[1300px] mx-auto px-6 lg:px-24 pt-16 md:pt-24 pb-24 md:pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
       {/* Crosshairs */}
@@ -1564,69 +1586,18 @@ function AuditSection() {
         <span className="text-[9px] font-mono tracking-widest text-gray-500 uppercase">VIDEO CALL</span>
       </div>
 
-      {/* Typeform Embed Container */}
-      <div className="relative w-full max-w-[1100px] h-[400px] md:h-[550px] bg-[#161920]/40 rounded-sm border border-white/5 flex flex-col p-[2px]">
-        {/* Corner Brackets */}
-        <div className="absolute -top-[1px] -left-[1px] w-3 h-3 border-t border-l border-[#869ab5]" />
-        <div className="absolute -top-[1px] -right-[1px] w-3 h-3 border-t border-r border-[#869ab5]" />
-        <div className="absolute -bottom-[1px] -left-[1px] w-3 h-3 border-b border-l border-[#869ab5]" />
-        <div className="absolute -bottom-[1px] -right-[1px] w-3 h-3 border-b border-r border-[#869ab5]" />
-
-        {/* Inner Border Container */}
-        <div className="flex-1 w-full h-full border border-white/10 rounded-sm flex flex-col relative overflow-hidden bg-[#121316]">
-          
-          {/* Mockup Typeform UI */}
-          <div className="flex-1 flex flex-col items-start justify-center p-6 md:p-8 lg:p-24 relative z-10 w-full h-full">
-            <div className="flex items-center gap-3 mb-10 w-full">
-              <span className="text-[12px] font-bold bg-white text-black w-5 h-5 rounded-[3px] flex items-center justify-center shrink-0">1</span>
-              <h3 className="text-[#f4f4f2] text-[18px] sm:text-[22px] md:text-[26px] font-medium tracking-wide">What is your full name?<span className="text-white/60 ml-1">*</span></h3>
-            </div>
-            
-            <div className="w-full max-w-[650px] mb-4">
-              <input 
-                type="text" 
-                placeholder="Type your answer here..." 
-                className="w-full bg-transparent border-b border-white text-[20px] sm:text-[24px] md:text-[32px] text-[#f4f4f2] placeholder:text-gray-600/80 focus:outline-none pb-3 transition-colors focus:border-white/80" 
-              />
-            </div>
-            
-            <div className="bg-[#59261a] border border-[#ff6b4a]/20 text-[#ffd4c4] text-[13px] px-4 py-2.5 rounded-[4px] flex items-center gap-2.5 mt-6 font-medium shadow-[0_4px_12px_rgba(0,0,0,0.2)]">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-[#ff6b4a]">
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                <line x1="12" y1="9" x2="12" y2="13" />
-                <line x1="12" y1="17" x2="12.01" y2="17" />
-              </svg>
-              Please fill in What is your full name?
-            </div>
-          </div>
-
-          {/* Typeform Footer Mock */}
-          <div className="absolute bottom-6 right-6 flex items-center gap-2 z-20">
-            <div className="flex items-center rounded overflow-hidden">
-              <button className="bg-white/20 hover:bg-white/30 text-[#f4f4f2] w-9 h-9 flex items-center justify-center transition-colors">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="18 15 12 9 6 15" />
-                </svg>
-              </button>
-              <button className="bg-white hover:bg-gray-200 text-black w-9 h-9 flex items-center justify-center transition-colors">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </button>
-            </div>
-            <div className="bg-white hover:bg-gray-100 text-black px-3 h-9 rounded flex items-center gap-1.5 text-[11px] font-bold tracking-tight cursor-pointer transition-colors">
-              Powered by 
-              <span className="flex items-center gap-[2px] ml-1">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="black">
-                  <rect x="2" y="6" width="7" height="12" rx="1.5" />
-                  <rect x="11" y="6" width="11" height="12" rx="1.5" />
-                </svg>
-                Typeform
-              </span>
-            </div>
-          </div>
-
-        </div>
+      {/* Tally Embed Container */}
+      <div className="relative w-full max-w-[1100px] min-h-[333px] bg-transparent flex flex-col">
+        <iframe 
+          data-tally-src="https://tally.so/embed/GxEPOj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+          loading="lazy" 
+          width="100%" 
+          height="333" 
+          frameBorder={0} 
+          marginHeight={0} 
+          marginWidth={0} 
+          title="Aplica para la auditoria gratuita:">
+        </iframe>
       </div>
     </section>
   );
