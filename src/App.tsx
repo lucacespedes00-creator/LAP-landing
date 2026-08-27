@@ -462,7 +462,7 @@ function IdealPartnersSection() {
   ];
 
   return (
-    <section className="w-full max-w-[1300px] mx-auto px-6 lg:px-24 pt-16 md:pt-24 pb-24 md:pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
+    <section id="target" className="w-full max-w-[1300px] mx-auto px-6 lg:px-24 pt-16 md:pt-24 pb-24 md:pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
       {/* Crosshairs */}
       <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
@@ -602,7 +602,7 @@ function ComparisonSection() {
   ];
 
   return (
-    <section className="w-full max-w-[1300px] mx-auto px-6 lg:px-24 pt-16 md:pt-24 pb-24 md:pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
+    <section id="lap" className="w-full max-w-[1300px] mx-auto px-6 lg:px-24 pt-16 md:pt-24 pb-24 md:pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
       {/* Crosshairs */}
       <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
@@ -743,7 +743,7 @@ function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="w-full max-w-[1300px] mx-auto px-6 lg:px-24 pt-16 md:pt-24 pb-24 md:pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
+    <section id="preguntas" className="w-full max-w-[1300px] mx-auto px-6 lg:px-24 pt-16 md:pt-24 pb-24 md:pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
       {/* Crosshairs */}
       <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
@@ -1661,12 +1661,13 @@ function FooterSection({ onNavigate }: { onNavigate?: (id: string) => void }) {
         <div className="flex gap-12 md:gap-20">
            <div className="flex flex-col gap-4">
               <span className="text-[10px] font-mono tracking-[0.2em] text-gray-500 uppercase font-bold mb-2">Agencia</span>
+              <button onClick={() => onNavigate?.('problema')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Problema</button>
+              <button onClick={() => onNavigate?.('solucion')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Solución</button>
               <button onClick={() => onNavigate?.('proceso')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Proceso</button>
-              <button onClick={() => onNavigate?.('solucion')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Resultados</button>
-              <a href="#" className="text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors">ROI calculator</a>
-              <button onClick={() => onNavigate?.('solucion')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Services</button>
-              <button onClick={() => onNavigate?.('playbooks')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Blog</button>
-              <a href="#" className="text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors">Careers</a>
+              <button onClick={() => onNavigate?.('playbooks')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Playbooks</button>
+              <button onClick={() => onNavigate?.('target')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Target</button>
+              <button onClick={() => onNavigate?.('lap')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">LAP</button>
+              <button onClick={() => onNavigate?.('preguntas')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Preguntas</button>
            </div>
            <div className="flex flex-col gap-4">
               <span className="text-[10px] font-mono tracking-[0.2em] text-gray-500 uppercase font-bold mb-2">Conecta</span>
