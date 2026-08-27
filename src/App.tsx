@@ -1589,7 +1589,7 @@ function AuditSection() {
       {/* Tally Embed Container */}
       <div className="relative w-full max-w-[1100px] min-h-[333px] bg-transparent flex flex-col">
         <iframe 
-          data-tally-src="https://tally.so/embed/GxEPOj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+          data-tally-src="https://tally.so/embed/GxEPOj?alignLeft=1&transparentBackground=1&dynamicHeight=1" 
           loading="lazy" 
           width="100%" 
           height="333" 
