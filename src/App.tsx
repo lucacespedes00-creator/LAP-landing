@@ -16,6 +16,7 @@ const navItems = [
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -100,11 +101,48 @@ export default function App() {
           
           <button 
             onClick={() => scrollToSection('agenda')}
-            className="bg-white text-black px-6 py-2.5 rounded-[4px] text-[13px] font-medium flex items-center gap-2 hover:bg-gray-100 transition-colors cursor-pointer"
+            className="hidden sm:flex bg-white text-black px-6 py-2.5 rounded-[4px] text-[13px] font-medium items-center gap-2 hover:bg-gray-100 transition-colors cursor-pointer"
           >
             Agenda <ArrowRight className="w-4 h-4" />
           </button>
+
+          {/* Mobile Hamburger Button */}
+          <button 
+            className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 cursor-pointer"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className={`block w-5 h-[1.5px] bg-[#f4f4f2] transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-[4.5px]' : ''}`} />
+            <span className={`block w-5 h-[1.5px] bg-[#f4f4f2] transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-5 h-[1.5px] bg-[#f4f4f2] transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-[4.5px]' : ''}`} />
+          </button>
         </nav>
+
+        {/* Mobile Menu Drawer */}
+        {mobileMenuOpen && (
+          <>
+            <div className="fixed inset-0 bg-black/60 z-40 md:hidden" onClick={() => setMobileMenuOpen(false)} />
+            <div className="md:hidden absolute top-full left-0 right-0 bg-[#1a1c20]/95 backdrop-blur-xl border-b border-white/10 z-50 px-6 py-6 flex flex-col gap-4 shadow-2xl">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => { scrollToSection(item.id); setMobileMenuOpen(false); }}
+                  className={`text-left text-[13px] font-mono tracking-[0.15em] uppercase py-3 border-b border-dashed border-white/10 transition-colors ${
+                    activeSection === item.id ? 'text-[#93a7c6] font-bold' : 'text-gray-400'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+              <button 
+                onClick={() => { scrollToSection('agenda'); setMobileMenuOpen(false); }}
+                className="bg-white text-black px-6 py-3 rounded-[4px] text-[14px] font-medium flex items-center justify-center gap-2 mt-2 cursor-pointer"
+              >
+                Agenda <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </>
+        )}
       </div>
 
       {/* Spacer to prevent layout shift when navbar becomes fixed */}
@@ -127,7 +165,7 @@ export default function App() {
            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
         </div>
         
-        <main className="flex-1 px-0 pt-[70px] pb-8 lg:pb-12 flex flex-col items-center justify-center relative">
+        <main className="flex-1 px-6 md:px-0 pt-[40px] md:pt-[70px] pb-8 lg:pb-12 flex flex-col items-center justify-center relative">
           
           {/* Dot Grid Background — contained within vertical lines, fades at edges */}
           <div
@@ -138,7 +176,7 @@ export default function App() {
               left: '48px',
               right: '48px',
               backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.12) 0.6px, transparent 1px)',
-              backgroundSize: '12px 12px',
+              backgroundSize: '8px 8px',
               maskImage: 'radial-gradient(ellipse 70% 50% at 50% 40%, black 30%, transparent 80%)',
               WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%)',
             }}
@@ -176,16 +214,16 @@ export default function App() {
               Linked Acquisition Partner
             </div>
             
-            <h1 className="text-[58px] font-serif font-medium leading-[1.05] tracking-tight text-[#f4f4f2] mb-8">
+            <h1 className="text-[32px] sm:text-[42px] md:text-[52px] lg:text-[58px] font-serif font-medium leading-[1.05] tracking-tight text-[#f4f4f2] mb-6 md:mb-8">
               Arquitectura Full-Funnel que Genera <span className="font-serif italic text-[#93a7c6] font-normal tracking-normal">10-30 Llamadas Calificadas B2B x Mes</span>
             </h1>
             
-            <p className="text-gray-400 text-[17.5px] leading-[28px] font-['Space_Grotesk'] font-normal not-italic max-w-[700px]">
+            <p className="text-gray-400 text-[15px] md:text-[17.5px] leading-[26px] md:leading-[28px] font-['Space_Grotesk'] font-normal not-italic max-w-[700px] px-2 md:px-0">
 Posicionamos a tu agencia B2B como la mejor y única opción de tus prospectos, convirtiéndote en el referente al que ya conocen, ya le creen, y transformando esa confianza en llamadas agendadas.            </p>
           </div>
 
           {/* Video Placeholder */}
-          <div className="w-full max-w-[750px] aspect-video mt-12 bg-[#161920]/30 border border-white/5 rounded-xl flex flex-col items-center justify-center backdrop-blur-sm relative overflow-hidden z-10 shadow-2xl">
+          <div className="w-full max-w-[750px] aspect-video mt-8 md:mt-12 bg-[#161920]/30 border border-white/5 rounded-xl flex flex-col items-center justify-center backdrop-blur-sm relative overflow-hidden z-10 shadow-2xl mx-2 md:mx-0">
              {/* Gradient overlay for depth */}
              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#121316]/80 pointer-events-none" />
              
@@ -203,7 +241,7 @@ Posicionamos a tu agencia B2B como la mejor y única opción de tus prospectos, 
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12 z-10">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 md:mt-12 z-10 w-full px-2 md:px-0">
             <button 
               onClick={() => scrollToSection('agenda')}
               className="w-full sm:w-auto bg-white text-black px-7 py-3.5 rounded-[4px] text-[15px] font-medium flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors cursor-pointer"
@@ -233,10 +271,10 @@ Posicionamos a tu agencia B2B como la mejor y única opción de tus prospectos, 
         </div>
 
         {/* THE PROBLEM SECTION */}
-        <section id="problema" className="w-[1300px] mx-auto px-6 lg:px-24 py-24 flex flex-col relative z-10">
+        <section id="problema" className="w-full max-w-[1300px] mx-auto px-6 lg:px-24 py-16 md:py-24 flex flex-col relative z-10">
           
           {/* Header */}
-          <div className="flex items-center gap-6 mb-16">
+          <div className="flex items-center gap-4 md:gap-6 mb-10 md:mb-16">
             <span className="text-[11px] font-mono tracking-[0.25em] text-[#869ab5] uppercase font-bold whitespace-nowrap">
               El Problema
             </span>
@@ -244,12 +282,12 @@ Posicionamos a tu agencia B2B como la mejor y única opción de tus prospectos, 
           </div>
 
           {/* Title & Desc */}
-          <div className="max-w-3xl mb-20">
-            <h2 className="text-[40px] md:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-6">
+          <div className="max-w-3xl mb-12 md:mb-20">
+            <h2 className="text-[30px] md:text-[40px] lg:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-6">
               Sos una opción más, <br className="hidden md:block" />
               <span className="italic text-[#93a7c6] font-normal">no LA UNICA en la que piensan</span>
             </h2>
-            <p className="text-gray-400 text-[17.5px] leading-[1.6] max-w-[640px] font-['Space_Grotesk'] font-normal not-italic">
+            <p className="text-gray-400 text-[15px] md:text-[17.5px] leading-[1.6] max-w-[640px] font-['Space_Grotesk'] font-normal not-italic">
 La mayoría de las agencias B2B compiten sin nombre propio. Escriben en frío a desconocidos que no tienen ningún motivo para confiar, y cada conversación arranca desde cero. Sin autoridad visible, no hay forma de destacar — solo de competir.            </p>
           </div>
 
@@ -424,7 +462,7 @@ function IdealPartnersSection() {
   ];
 
   return (
-    <section className="w-[1300px] mx-auto px-6 lg:px-24 pt-24 pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
+    <section className="w-full max-w-[1300px] mx-auto px-6 lg:px-24 pt-16 md:pt-24 pb-24 md:pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
       {/* Crosshairs */}
       <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
@@ -441,7 +479,7 @@ function IdealPartnersSection() {
       </div>
 
       <div className="max-w-[700px] mb-16">
-        <h2 className="text-[40px] md:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-6">
+        <h2 className="text-[30px] md:text-[40px] lg:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-6">
           Para quienes <br /><span className="italic text-[#93a7c6] font-normal">estamos hechos</span>
         </h2>
         <p className="text-gray-400 text-[16.5px] leading-[1.6] font-['Space_Grotesk'] font-normal not-italic">
@@ -504,7 +542,7 @@ Esta arquitectura no es para todos. Es para agencias B2B con mercado suficiente 
          <p className="text-[14px] text-gray-400 font-['Space_Grotesk'] leading-[1.6] max-w-[500px]">
            <span className="italic text-gray-300 mr-1">No estás seguro de que lado estás?</span> 
            Aplicá para una auditoría. Te digo sin vueltas si la arquitectura es la adecuada para tu negocio en este momento.         </p>
-         <button className="bg-[#f0f0f0] text-[#121316] px-8 py-4 rounded font-medium text-[14px] flex items-center gap-3 hover:bg-white transition-colors shrink-0 whitespace-nowrap">
+         <button className="bg-[#f0f0f0] text-[#121316] px-6 md:px-8 py-4 rounded font-medium text-[14px] flex items-center gap-3 hover:bg-white transition-colors shrink-0 text-center">
             Aplica para una auditoría de captación
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="translate-y-[1px]">
                <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -564,7 +602,7 @@ function ComparisonSection() {
   ];
 
   return (
-    <section className="w-[1300px] mx-auto px-6 lg:px-24 pt-24 pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
+    <section className="w-full max-w-[1300px] mx-auto px-6 lg:px-24 pt-16 md:pt-24 pb-24 md:pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
       {/* Crosshairs */}
       <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
@@ -581,7 +619,7 @@ function ComparisonSection() {
       </div>
 
       <div className="max-w-[700px] mb-16">
-        <h2 className="text-[40px] md:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-6">
+        <h2 className="text-[30px] md:text-[40px] lg:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-6">
           Por Qué LAP vs <br />
           <span className="italic text-[#93a7c6] font-normal">Otras Alternativas</span>
         </h2>
@@ -589,7 +627,7 @@ function ComparisonSection() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full max-w-[1100px] items-start">
         {/* Left Column - Rainmaking */}
-        <div className="bg-[#1a1c23]/40 border border-white/5 rounded-xl flex flex-col h-full min-h-[480px]">
+        <div className="bg-[#1a1c23]/40 border border-white/5 rounded-xl flex flex-col h-full lg:min-h-[480px]">
           <div className="p-6 lg:p-8 border-b border-white/5 flex items-center gap-4">
             <div className="w-8 h-8 rounded border border-[#93a7c6]/30 bg-[#93a7c6]/10 flex items-center justify-center">
                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#93a7c6]">
@@ -615,9 +653,9 @@ function ComparisonSection() {
         </div>
 
         {/* Right Column - Alternatives */}
-        <div className="flex flex-col h-full min-h-[480px]">
+        <div className="flex flex-col h-full lg:min-h-[480px]">
           {/* Tabs */}
-          <div className="flex items-center gap-6 mb-6 border-b border-white/10 overflow-x-auto scrollbar-hide pb-0 pl-2">
+          <div className="flex items-center gap-3 md:gap-6 mb-6 border-b border-white/10 overflow-x-auto scrollbar-hide pb-0 pl-2">
             {alternatives.map((alt, idx) => (
               <button
                 key={alt.id}
@@ -705,7 +743,7 @@ function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="w-[1300px] mx-auto px-6 lg:px-24 pt-24 pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
+    <section className="w-full max-w-[1300px] mx-auto px-6 lg:px-24 pt-16 md:pt-24 pb-24 md:pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
       {/* Crosshairs */}
       <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
@@ -721,7 +759,7 @@ function FAQSection() {
         <div className="flex-1 h-px border-b border-dashed border-white/10" />
       </div>
 
-      <h2 className="text-[40px] md:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-20">
+      <h2 className="text-[30px] md:text-[40px] lg:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-20">
         Preguntas..? <span className="italic text-[#93a7c6] font-normal">respondidas!</span>
       </h2>
 
@@ -748,7 +786,7 @@ function FAQItem({ num, question, answer, isOpen, onClick }: { num: string, ques
         onClick={onClick}
         className="w-full flex items-center justify-between py-8 text-left group"
       >
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-4 md:gap-8">
           <span className="text-[11px] font-mono tracking-widest text-gray-500">{num}</span>
           <span className="text-[20px] md:text-[24px] font-serif font-medium text-gray-200 group-hover:text-[#f4f4f2] transition-colors">{question}</span>
         </div>
@@ -757,9 +795,9 @@ function FAQItem({ num, question, answer, isOpen, onClick }: { num: string, ques
         </span>
       </button>
       <div 
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[300px] opacity-100 pb-8' : 'max-h-0 opacity-0'}`}
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[500px] opacity-100 pb-8' : 'max-h-0 opacity-0'}`}
       >
-        <p className="text-[15px] leading-[1.6] text-gray-400 font-['Space_Grotesk'] pl-[62px] max-w-[800px]">
+        <p className="text-[14px] md:text-[15px] leading-[1.6] text-gray-400 font-['Space_Grotesk'] pl-8 md:pl-[62px] max-w-[800px]">
           {answer}
         </p>
       </div>
@@ -874,7 +912,7 @@ function SolutionSection() {
   ];
 
   return (
-    <section id="solucion" className="w-[1300px] mx-auto px-6 lg:px-24 py-24 flex flex-col relative z-10 border-t border-dashed border-white/10">
+    <section id="solucion" className="w-full max-w-[1300px] mx-auto px-6 lg:px-24 py-16 md:py-24 flex flex-col relative z-10 border-t border-dashed border-white/10">
       {/* Crosshairs */}
       <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
@@ -891,7 +929,7 @@ function SolutionSection() {
       </div>
 
       <div className="mb-16">
-        <h2 className="text-[40px] md:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-6">
+        <h2 className="text-[30px] md:text-[40px] lg:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-6">
           Una Arquitectura Full-Funnel<br className="hidden md:block" />
           <span className="italic text-[#93a7c6] font-normal">de Autoridad y Captación</span>
         </h2>
@@ -973,7 +1011,7 @@ function DeploymentSection() {
   ];
 
   return (
-    <section id="proceso" className="w-[1300px] mx-auto px-6 lg:px-24 py-24 flex flex-col relative z-10 border-t border-dashed border-white/10">
+    <section id="proceso" className="w-full max-w-[1300px] mx-auto px-6 lg:px-24 py-16 md:py-24 flex flex-col relative z-10 border-t border-dashed border-white/10">
       {/* Crosshairs */}
       <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
@@ -991,7 +1029,7 @@ function DeploymentSection() {
 
       <div className="mb-16 flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6">
         <div>
-          <h2 className="text-[40px] md:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-6">
+          <h2 className="text-[30px] md:text-[40px] lg:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-6">
             Tu sistema completo, listo, <br /><span className="italic text-[#93a7c6] font-normal">y corriendo en la 2da semana!</span>
           </h2>
           <p className="text-gray-400 text-[17.5px] leading-[1.6] max-w-[640px] font-['Space_Grotesk'] font-normal not-italic">
@@ -1046,10 +1084,10 @@ function DeploymentSection() {
           <div className="text-[10px] font-mono tracking-widest text-[#869ab5] uppercase mb-4">
             FASE 0{activePhase + 1}
           </div>
-          <h3 className="text-[32px] lg:text-[40px] font-serif font-medium text-[#f4f4f2] leading-[1.1] mb-6 min-h-[88px] flex items-center">
+          <h3 className="text-[26px] md:text-[32px] lg:text-[40px] font-serif font-medium text-[#f4f4f2] leading-[1.1] mb-6 md:min-h-[88px] flex items-center">
             {phases[activePhase].heading}
           </h3>
-          <p className="text-gray-400 text-[16px] leading-[1.7] font-['Space_Grotesk'] font-normal not-italic min-h-[110px]">
+          <p className="text-gray-400 text-[15px] md:text-[16px] leading-[1.7] font-['Space_Grotesk'] font-normal not-italic md:min-h-[110px]">
             {phases[activePhase].desc}
           </p>
           
@@ -1073,7 +1111,7 @@ function DeploymentSection() {
         </div>
 
         {/* Right: Visual Container */}
-        <div className="bg-[#161920]/40 border border-white/5 rounded-2xl p-8 lg:p-12 flex flex-col relative min-h-[460px] overflow-hidden">
+        <div className="bg-[#161920]/40 border border-white/5 rounded-2xl p-6 md:p-8 lg:p-12 flex flex-col relative min-h-[360px] md:min-h-[460px] overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/[0.03] to-transparent pointer-events-none" />
           
           <div className="flex justify-between items-center text-[9px] font-mono tracking-widest text-gray-500 uppercase mb-10 relative z-10 border-b border-white/5 pb-4">
@@ -1422,7 +1460,7 @@ function YoutubeSection() {
   ];
 
   return (
-    <section id="playbooks" className="w-[1300px] mx-auto px-6 lg:px-24 pt-24 pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
+    <section id="playbooks" className="w-full max-w-[1300px] mx-auto px-6 lg:px-24 pt-16 md:pt-24 pb-24 md:pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
       {/* Crosshairs */}
       <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
@@ -1438,7 +1476,7 @@ function YoutubeSection() {
         <div className="flex-1 h-px border-b border-dashed border-white/10" />
       </div>
 
-      <h2 className="text-[40px] md:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-16">
+      <h2 className="text-[30px] md:text-[40px] lg:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-16">
         Quieres saber mas sobre<br className="hidden md:block" />
          <span className="italic text-[#93a7c6] font-normal">estos sistemas de captacion?</span>
       </h2>
@@ -1500,7 +1538,7 @@ function VideoCard({ title, desc, thumb }: { title?: string, desc?: string, thum
 
 function AuditSection() {
   return (
-    <section id="agenda" className="w-[1300px] mx-auto px-6 lg:px-24 pt-24 pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
+    <section id="agenda" className="w-full max-w-[1300px] mx-auto px-6 lg:px-24 pt-16 md:pt-24 pb-24 md:pb-32 flex flex-col relative z-10 border-t border-dashed border-white/10">
       {/* Crosshairs */}
       <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
@@ -1513,7 +1551,7 @@ function AuditSection() {
         <div className="text-[10px] font-mono tracking-[0.25em] text-[#869ab5] uppercase font-bold mb-6">
           CHARLEMOS DE ESTRATEGIAS Y ESCALAR
         </div>
-        <h2 className="text-[40px] md:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-6">
+        <h2 className="text-[30px] md:text-[40px] lg:text-[48px] font-serif font-medium leading-[1.1] tracking-tight text-[#f4f4f2] mb-6">
           Aplica y reserva tu<br /><span className="italic text-[#93a7c6] font-normal">Auditoria de Captación</span>
         </h2>
         <p className="text-gray-400 text-[17px] leading-[1.6] font-['Space_Grotesk'] font-normal not-italic">
@@ -1527,7 +1565,7 @@ function AuditSection() {
       </div>
 
       {/* Typeform Embed Container */}
-      <div className="relative w-full max-w-[1100px] h-[550px] bg-[#161920]/40 rounded-sm border border-white/5 flex flex-col p-[2px]">
+      <div className="relative w-full max-w-[1100px] h-[400px] md:h-[550px] bg-[#161920]/40 rounded-sm border border-white/5 flex flex-col p-[2px]">
         {/* Corner Brackets */}
         <div className="absolute -top-[1px] -left-[1px] w-3 h-3 border-t border-l border-[#869ab5]" />
         <div className="absolute -top-[1px] -right-[1px] w-3 h-3 border-t border-r border-[#869ab5]" />
@@ -1538,17 +1576,17 @@ function AuditSection() {
         <div className="flex-1 w-full h-full border border-white/10 rounded-sm flex flex-col relative overflow-hidden bg-[#121316]">
           
           {/* Mockup Typeform UI */}
-          <div className="flex-1 flex flex-col items-start justify-center p-8 lg:p-24 relative z-10 w-full h-full">
+          <div className="flex-1 flex flex-col items-start justify-center p-6 md:p-8 lg:p-24 relative z-10 w-full h-full">
             <div className="flex items-center gap-3 mb-10 w-full">
               <span className="text-[12px] font-bold bg-white text-black w-5 h-5 rounded-[3px] flex items-center justify-center shrink-0">1</span>
-              <h3 className="text-[#f4f4f2] text-[22px] md:text-[26px] font-medium tracking-wide">What is your full name?<span className="text-white/60 ml-1">*</span></h3>
+              <h3 className="text-[#f4f4f2] text-[18px] sm:text-[22px] md:text-[26px] font-medium tracking-wide">What is your full name?<span className="text-white/60 ml-1">*</span></h3>
             </div>
             
             <div className="w-full max-w-[650px] mb-4">
               <input 
                 type="text" 
                 placeholder="Type your answer here..." 
-                className="w-full bg-transparent border-b border-white text-[24px] md:text-[32px] text-[#f4f4f2] placeholder:text-gray-600/80 focus:outline-none pb-3 transition-colors focus:border-white/80" 
+                className="w-full bg-transparent border-b border-white text-[20px] sm:text-[24px] md:text-[32px] text-[#f4f4f2] placeholder:text-gray-600/80 focus:outline-none pb-3 transition-colors focus:border-white/80" 
               />
             </div>
             
@@ -1596,7 +1634,7 @@ function AuditSection() {
 
 function FooterSection({ onNavigate }: { onNavigate?: (id: string) => void }) {
   return (
-    <footer className="w-[1300px] mx-auto pt-24 pb-8 flex flex-col relative z-10 border-t border-dashed border-white/10 mt-12">
+    <footer className="w-full max-w-[1300px] mx-auto pt-24 pb-8 flex flex-col relative z-10 border-t border-dashed border-white/10 mt-12">
       {/* Crosshairs */}
       <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white/40 hidden md:block">
          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 0V15M0 7.5H15" stroke="currentColor" strokeWidth="1"/></svg>
@@ -1620,7 +1658,7 @@ function FooterSection({ onNavigate }: { onNavigate?: (id: string) => void }) {
         </div>
 
         {/* Right Cols */}
-        <div className="flex gap-20">
+        <div className="flex gap-12 md:gap-20">
            <div className="flex flex-col gap-4">
               <span className="text-[10px] font-mono tracking-[0.2em] text-gray-500 uppercase font-bold mb-2">Agencia</span>
               <button onClick={() => onNavigate?.('proceso')} className="text-left text-[13.5px] text-gray-300 font-medium font-['Space_Grotesk'] hover:text-[#f4f4f2] transition-colors cursor-pointer">Proceso</button>
