@@ -226,7 +226,7 @@ Posicionamos a tu agencia B2B como la mejor y única opción de tus prospectos, 
           <div className="w-full max-w-[750px] aspect-video mt-8 md:mt-12 bg-[#161920]/30 border border-white/5 rounded-xl flex flex-col items-center justify-center backdrop-blur-sm relative overflow-hidden z-10 shadow-2xl mx-2 md:mx-0">
              <div style={{ position: "relative", paddingBottom: "62.5%", height: 0, width: "100%" }}>
                <iframe 
-                 src="https://www.loom.com/embed/0b70230ac1a94774a839cd764521c262" 
+                 src="https://www.loom.com/embed/0b70230ac1a94774a839cd764521c262?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" 
                  frameBorder="0" 
                  webkitAllowFullScreen 
                  mozAllowFullScreen 
