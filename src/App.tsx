@@ -224,19 +224,15 @@ Posicionamos a tu agencia B2B como la mejor y única opción de tus prospectos, 
 
           {/* Video Placeholder */}
           <div className="w-full max-w-[750px] aspect-video mt-8 md:mt-12 bg-[#161920]/30 border border-white/5 rounded-xl flex flex-col items-center justify-center backdrop-blur-sm relative overflow-hidden z-10 shadow-2xl mx-2 md:mx-0">
-             {/* Gradient overlay for depth */}
-             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#121316]/80 pointer-events-none" />
-             
-             {/* In progress indicator */}
-             <div className="flex flex-col items-center justify-center relative z-10 opacity-70">
-                <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center backdrop-blur-md border border-white/10 mb-4 shadow-[0_0_30px_rgba(255,255,255,0.02)]">
-                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#869ab5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="animate-[spin_4s_linear_infinite]">
-                     <path d="M21.5 2v6h-6M2.13 15.57a10 10 0 1 0 5.43-10.9l-5.43 2.9" />
-                   </svg>
-                </div>
-                
-                <span className="text-[11px] font-mono tracking-widest text-[#869ab5] uppercase font-bold">Video en proceso</span>
-                <span className="text-[13px] text-gray-500 mt-2 font-['Space_Grotesk']">Filmando y editando...</span>
+             <div style={{ position: "relative", paddingBottom: "62.5%", height: 0, width: "100%" }}>
+               <iframe 
+                 src="https://www.loom.com/embed/0b70230ac1a94774a839cd764521c262" 
+                 frameBorder="0" 
+                 webkitAllowFullScreen 
+                 mozAllowFullScreen 
+                 allowFullScreen 
+                 style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+               ></iframe>
              </div>
           </div>
 
